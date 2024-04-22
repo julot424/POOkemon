@@ -21,6 +21,11 @@ public class Utils {
         return (random.nextInt(4) + 1) * 10;
     }
 
+
+    /**
+     *
+     * @return Un Type generer aléatoirement depuis la class Type.java
+     */
     public static Type getRandomType()
     {
         Type[] types = Type.values();

@@ -11,12 +11,14 @@ public class Pokemon
   String m_nom;
   int m_PV;
   int m_atk;
+  Type m_type;
 
-  public Pokemon(String nom, int PV, int atk /*ELement*/)
+  public Pokemon(String nom, int PV, int atk, Type type)
   {
     this.m_nom = nom;
     this.m_atk = atk;
     this.m_PV = PV;
+    this.m_type = type;
   }
 
 
