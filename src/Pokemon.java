@@ -5,6 +5,7 @@ public class Pokemon
     System.out.println("Lancement du jeu ...");
     System.out.println(Utils.getRandomPV());
     System.out.println(Utils.getRandomATK());
+    System.out.println(Utils.getRandomType());
   }
 
   String m_nom;

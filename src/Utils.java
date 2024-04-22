@@ -1,3 +1,4 @@
+import java.lang.annotation.ElementType;
 import java.util.Random;
 public class Utils {
     private static final Random random = new Random();
@@ -18,5 +19,12 @@ public class Utils {
     public static int getRandomATK()
     {
         return (random.nextInt(4) + 1) * 10;
+    }
+
+    public static Type getRandomType()
+    {
+        Type[] types = Type.values();
+        int index = random.nextInt(types.length);
+        return types[index];
     }
 }
