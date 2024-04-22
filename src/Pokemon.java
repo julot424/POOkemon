@@ -4,4 +4,15 @@ public class Pokemon
   {
     System.out.println("Lancement du jeu ...");
   }
+
+  String m_nom;
+  int m_PV;
+  int m_atk;
+
+  public Pokemon(String nom, int PV, int atk/*ELement*/)
+  {
+    this.m_nom = nom;
+    this.m_atk = atk;
+    this.m_PV = PV;
+  }
 }
