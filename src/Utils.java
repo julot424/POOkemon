@@ -6,7 +6,7 @@ import java.util.Random;
 public class Utils {
 
     //ArrayList couleurs = new ArrayList<(Arrays.asList(Rouge, Bleu, Vert));
-    private static ArrayList listePokemon = new ArrayList(Arrays.asList(
+    private static ArrayList m_listePokemon = new ArrayList(Arrays.asList(
             "Bulbizarre", "Herbizarre", "Florizarre",
             "Salamèche", "Reptincel", "Dracaufeu",
             "Carapuce", "Carabaffe", "Tortank",
@@ -97,8 +97,8 @@ public class Utils {
      */
     public static String getRandomNom()
     {
-        int i = random.nextInt(listePokemon.size());
-        return listePokemon.remove(i).toString();
+        int i = random.nextInt(m_listePokemon.size());
+        return m_listePokemon.remove(i).toString();
     }
 
     /**
@@ -107,6 +107,6 @@ public class Utils {
      */
     public static int taille()
     {
-        return listePokemon.size();
+        return m_listePokemon.size();
     }
 }
