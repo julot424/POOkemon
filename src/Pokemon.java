@@ -1,5 +1,7 @@
+import java.util.ArrayList;
+
 /**
- * La classe Pokemon permet de représenter un Pokémon dans le jeu.
+ * La classe Pokemon permet de créer un Pokémon dans le jeu.
  */
 public class Pokemon {
 
@@ -10,35 +12,47 @@ public class Pokemon {
     System.out.println("Lancement du jeu ...");
     System.out.println("-------------------------------");
 
-    // Afficher les détails du premier Pokémon
-    afficherDetailsPokemon("PREMIER POKEMON", Utils.getRandomNom(), Utils.getRandomPV(), Utils.getRandomATK(), Utils.getRandomType());
+    Joueur joueur = new Joueur();//création d'un nouveau joueur
 
-    // Afficher les détails du deuxième Pokémon
-    afficherDetailsPokemon("DEUXIEME POKEMON", Utils.getRandomNom(), Utils.getRandomPV(), Utils.getRandomATK(), Utils.getRandomType());
+    // Ajout de trois Pokémon au deck du joueur
+    for (int i = 0; i < 3; i++) {
+      joueur.ajouterPokemon(new Pokemon(Utils.getRandomNom(), Utils.getRandomPV(), Utils.getRandomATK(), Utils.getRandomType()));
+    }
 
-    // Afficher les détails du troisième Pokémon
-    afficherDetailsPokemon("TROISIEME POKEMON", Utils.getRandomNom(), Utils.getRandomPV(), Utils.getRandomATK(), Utils.getRandomType());
+    // Affichage du deck du joueur
+    afficherDeckJoueur(joueur);
+  }
+
+  /**
+   * Afficher le deck d'un joueur.
+   * @param joueur Le joueur dont le deck doit être affiché.
+   */
+  public static void afficherDeckJoueur(Joueur joueur) {
+    System.out.println("Deck du joueur:");
+    System.out.println("<-------------------------------->");
+    ArrayList<Pokemon> deckJoueur = joueur.getDeck();
+    for (int i = 0; i < deckJoueur.size(); i++) {
+      afficherDetailsPokemon("Pokémon " + (i + 1), deckJoueur.get(i));
+    }
   }
 
 
   /**
-   * Afficher les détails d'un Pokémon.
+   * Affiche les détails d'un Pokémon.
    * @param titre Le titre du Pokémon.
-   * @param nom Le nom du Pokémon.
-   * @param pv Les points de vie du Pokémon.
-   * @param atk L'attaque du Pokémon.
-   * @param type Le type du Pokémon.
+   * @param pokemon Le Pokémon dont les détails doivent être affichés.
    */
-  public static void afficherDetailsPokemon(String titre, String nom, int pv, int atk, Type type) {
+  public static void afficherDetailsPokemon(String titre, Pokemon pokemon) {
     System.out.println(titre);
-    System.out.println("Pokémon: " + nom);
-    System.out.println("Point de vie: " + pv);
-    System.out.println("Attaque: " + atk);
-    System.out.println("Type: " + type);
+    System.out.println("Pokémon: " + pokemon.m_nom);
+    System.out.println("Point de vie: " + pokemon.m_PV);
+    System.out.println("Attaque: " + pokemon.m_atk);
+    System.out.println("Type: " + pokemon.m_type);
     System.out.println("-------------------------------");
   }
 
-  // Définition de la classe Pokemon
+
+  // Attributs
   String m_nom;
   int m_PV;
   int m_atk;
