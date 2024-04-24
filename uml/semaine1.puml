@@ -28,6 +28,20 @@ class Utils{
     +getRandomtype(): Type
     +getRandomNom(): String
     +taille(): Integer
-
 }
+class Joueur{
+    -m_nom: String
+    -m_deck: ArrayList<Pokemon>
+    +<<Create>> Joueur()
+    +getDeck(): ArrayList<Pokemon>
+    +ajouterPokemon(pokemon: Pokemon)
+}
+class AffichageJoueur{
+    +afficherDeckJoueur(joueur: Joueur)
+}
+class AffichagePokemon{
+    +afficherDetailsPokemon(pokemon: Pokemon)
+}
+Pokemon "1" *-- "*" Utils : Utilise
+Joueur "0..1" *-- "*" Pokemon : Possède
 @enduml
