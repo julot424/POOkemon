@@ -39,7 +39,9 @@ class Joueur{
 class AffichageJoueur{
     +afficherDeckJoueur(joueur: Joueur)
 }
-
+class AffichagePokemon{
+    +afficherDetailsPokemon(pokemon: Pokemon)
+}
 Pokemon "1" *-- "*" Utils : Utilise
 Joueur "0..1" *-- "*" Pokemon : Possède
 @enduml
