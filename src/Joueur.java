@@ -16,4 +16,11 @@ public class Joueur {
     public ArrayList<Pokemon> getDeck() {
         return this.m_deck;
     }
+    /**
+     * Ajoute un Pokémon au deck du joueur.
+     * @param pokemon Le Pokémon à ajouter.
+     */
+    public void ajouterPokemon(Pokemon pokemon) {
+        m_deck.add(pokemon);
+    }
 }
