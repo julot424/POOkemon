@@ -3,18 +3,20 @@ public class Pokemon
   public static void main(String[] args)
   {
     System.out.println("Lancement du jeu ...");
-    System.out.println(Utils.taille());
-    System.out.println(Utils.getRandomNom());
-    System.out.println(Utils.getRandomPV());
-    System.out.println(Utils.getRandomATK());
-    System.out.println(Utils.getRandomType());
     System.out.println("-------------------------------");
-    System.out.println(Utils.taille());
-    System.out.println(Utils.getRandomNom());
-    System.out.println(Utils.getRandomPV());
-    System.out.println(Utils.getRandomATK());
-    System.out.println(Utils.getRandomType());
-
+    System.out.println("Premier Pokémon: ");
+    System.out.println("Taille Liste : " +Utils.taille());
+    System.out.println("Pokémon: " +Utils.getRandomNom());
+    System.out.println("Point de vie: " +Utils.getRandomPV());
+    System.out.println("Attaque: " +Utils.getRandomATK());
+    System.out.println("Type: " +Utils.getRandomType());
+    System.out.println("-------------------------------");
+    System.out.println("Deuxième Pokémon");
+    System.out.println("Taille Liste : " +Utils.taille());
+    System.out.println("Pokémon: " +Utils.getRandomNom());
+    System.out.println("Point de vie: " +Utils.getRandomPV());
+    System.out.println("Attaque: " +Utils.getRandomATK());
+    System.out.println("Type: " +Utils.getRandomType());
 
   }
 
