@@ -6,8 +6,10 @@ import java.util.ArrayList;
 public class Joueur {
     //Attributs
     private String m_nom;
-
     private ArrayList<Pokemon> m_deck;
+    public Joueur() {
+        m_deck = new ArrayList<>(); // Initialisation du deck
+    }
 
     /**
      * Obtient le deck du joueur.
