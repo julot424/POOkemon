@@ -1,0 +1,33 @@
+@startuml
+scale 1
+skinparam classFontStyle Bold
+skinparam defaultFontSize 15
+hide empty members
+skinparam classAttribute IconSize 0
+skinparam classFontStyle Bold
+hide enum methods
+
+
+class Pokemon{
+    -m_atk : Integer
+    -m_nom : Strong
+    -m_PV: Integer
+    -m_type : Type
+    +<<Create>> Pokemon (nom: String, PV: Integer, atk: Integer, type: Type)
+}
+enum Type{
+        TERRE
+        EAU
+        FEU
+        AIR
+}
+class Utils{
+    -m_listePokemon: ArrayList
+    +getRandomPV(): Integer
+    +getRandomATK(): Integer
+    +getRandomtype(): Type
+    +getRandomNom(): String
+    +taille(): Integer
+
+}
+@enduml
