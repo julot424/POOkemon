@@ -11,6 +11,6 @@ public class Main {
         }
 
         // Affichage du deck du joueur
-        AffichageJoueur.afficherDeckJoueur(joueur);
+        Affichages.afficherDeckJoueur(joueur);
     }
 }
