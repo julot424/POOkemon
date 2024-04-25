@@ -10,14 +10,14 @@ hide enum methods
 
 class Pokemon{
     -m_atk : Integer
-    -m_nom : Strong
+    -m_nom : String
     -m_PV: Integer
     -m_type : Type
     +<<Create>> Pokemon (nom: String, PV: Integer, atk: Integer, type: Type)
     +getAtk(): Integer
     +getPV(): Integer
     +getType(): Type
-    +attaquer(cible: Pokemon)
+    +attaquer(cible: Pokemon): Boolean
 }
 enum Type{
         TERRE
