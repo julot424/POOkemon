@@ -24,4 +24,6 @@ public class Affichages {
         System.out.println("Type: " + pokemon.m_type);
         System.out.println("-------------------------------");
     }
+
+
 }
