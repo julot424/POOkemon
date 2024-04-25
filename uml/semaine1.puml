@@ -14,6 +14,10 @@ class Pokemon{
     -m_PV: Integer
     -m_type : Type
     +<<Create>> Pokemon (nom: String, PV: Integer, atk: Integer, type: Type)
+    +getAtk(): Integer
+    +getPV(): Integer
+    +getType(): Type
+    +attaquer(cible: Pokemon)
 }
 enum Type{
         TERRE
@@ -36,12 +40,11 @@ class Joueur{
     +getDeck(): ArrayList<Pokemon>
     +ajouterPokemon(pokemon: Pokemon)
 }
-class AffichageJoueur{
+class Affichage{
     +afficherDeckJoueur(joueur: Joueur)
-}
-class AffichagePokemon{
     +afficherDetailsPokemon(pokemon: Pokemon)
-}
+    }
+
 Pokemon "1" *-- "*" Utils : Utilise
 Joueur "0..1" *-- "*" Pokemon : Possède
 @enduml
