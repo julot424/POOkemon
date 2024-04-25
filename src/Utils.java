@@ -107,4 +107,13 @@ public class Utils {
     {
         return m_listePokemon.size();
     }
+
+    /**
+     * Sert a determiner quel joueur jouera en premier
+     * @return Un int entre 0 et 1
+     */
+    public static int getRandomFirstPlayer()
+    {
+        return random.nextInt(2);
+    }
 }
