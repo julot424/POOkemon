@@ -13,7 +13,7 @@ public class Joueur {
      * Initialise le deck du joueur.
      */
     public Joueur() {
-        m_deck = new ArrayList<>(); // Initialisation du deck
+        this.m_deck = new ArrayList<>(); // Initialisation du deck
     }
 
     /**
@@ -28,7 +28,8 @@ public class Joueur {
      * Ajoute un Pokémon au deck du joueur.
      * @param pokemon Le Pokémon à ajouter.
      */
-    public void ajouterPokemon(Pokemon pokemon) {
-        m_deck.add(pokemon);
+    public void ajouterPokemon(Pokemon pokemon)
+    {
+        this.m_deck.add(pokemon);
     }
 }
