@@ -10,4 +10,6 @@ public class AffichagePokemon {
         System.out.println("Type: " + pokemon.m_type);
         System.out.println("-------------------------------");
     }
+
+
 }
