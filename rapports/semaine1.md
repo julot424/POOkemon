@@ -16,14 +16,17 @@ Au cours de cette période, nous avons pu implémenter les fonctionnalités suiv
 - **Création de Pokémon** : Nous avons créé la classe `Pokemon` pour représenter les Pokémon dans le jeu, avec des attributs tels que le nom, les points de vie (PV), l'attaque (ATK) et le type.
 - **Gestion du joueur et de son deck** : Nous avons mis en place la classe `Joueur` pour représenter le joueur dans le jeu, avec la capacité d'ajouter des Pokémon à leur deck.
 - **Affichage des détails des Pokémon et du deck du joueur** : Nous avons créé des classes pour gérer l'affichage des détails des Pokémon et du deck des joueurs, afin de fournir une interface utilisateur claire et conviviale.
-
+- **Gestion des affinités** : Nous avons créé une methode qui permet d'attaquer un pokemon en prenant compte de son affinité
+- **Choix du 1er joueur** : Nous avons également créé une methode qui permet de choisir aléatoirement le 1er joueur ainsi que de remplir une liste de Pokemon en fonction de l'ordre
 ## Difficultés Rencontrées
 
 Au cours de ce processus de développement, nous avons rencontré les difficultés suivantes :
-A REMPLIR
+- Le choix entre une classe abstraite et une classe Enumerate pour 'Type'
+- La prise en main de GitLab, problème de conflit etc ...
 ## Plans pour le Prochain Rendu
 
 Pour le prochain rendu, nous prévoyons de :
-
+- Finir les classes du package 'Plateau'
+- Commencer à s'occuper de l'affichage
 ---
 
