@@ -1,9 +1,9 @@
 public class Pokemon
 {
-  String m_nom;
-  int m_PV;
-  int m_atk;
-  Type m_type;
+  protected String m_nom;
+  protected int m_PV;
+  protected int m_atk;
+  protected Type m_type;
 
   public Pokemon(String nom, int PV, int atk, Type type)
   {
