@@ -44,7 +44,20 @@ class Affichage{
     +afficherDeckJoueur(joueur: Joueur)
     +afficherDetailsPokemon(pokemon: Pokemon)
     }
-
+package Plateau {
+    class Defausse
+    {
+    }
+    class Main
+    {
+    }
+    class Pioche
+    {
+    }
+    class Terrain
+    {
+    }
+}
 Pokemon "1" *-- "*" Utils : Utilise
 Joueur "0..1" *-- "*" Pokemon : Possède
 @enduml
