@@ -15,6 +15,7 @@ class Pokemon{
     -m_type : Type
     +<<Create>> Pokemon (nom: String, PV: Integer, atk: Integer, type: Type)
     +getAtk(): Integer
+    +getNom(): String
     +getPV(): Integer
     +getType(): Type
     +attaquer(cible: Pokemon): Boolean
@@ -26,7 +27,9 @@ enum Type{
         AIR
 }
 class Utils{
+    -random: Random
     -m_listePokemon: ArrayList
+    +getRandomFirstPlayer(): Integer
     +getRandomPV(): Integer
     +getRandomATK(): Integer
     +getRandomtype(): Type
@@ -43,6 +46,12 @@ class Joueur{
 class Affichage{
     +afficherDeckJoueur(joueur: Joueur)
     +afficherDetailsPokemon(pokemon: Pokemon)
+    }
+class Jeu{
+    -m_ia : Joueur
+    -m_user: Joueur
+    +jeuAIFirst()
+    +jeuUserFirst()
     }
 package Plateau {
     class Defausse
