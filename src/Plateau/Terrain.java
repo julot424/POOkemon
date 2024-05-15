@@ -1,4 +1,6 @@
 package Plateau;
 
-public class Terrain {
+public class Terrain
+{
+
 }

@@ -25,5 +25,10 @@ public class Affichage {
         System.out.println("-------------------------------");
     }
 
+    public static void afficherTailleDeck(Joueur joueur)
+    {
+        System.out.println(joueur.getDeck().size());
+    }
+
 
 }

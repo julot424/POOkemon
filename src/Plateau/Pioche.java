@@ -1,6 +1,6 @@
 package Plateau;
 
-public class Main
+public class Pioche
 {
 
 }
