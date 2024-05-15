@@ -4,7 +4,6 @@ import Entites.Joueur;
 import Entites.Pokemon;
 import Utilitaires.Utils;
 
-
 public class Jeu {
 
     static Joueur user = new Joueur();

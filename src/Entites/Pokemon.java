@@ -114,7 +114,4 @@ public class Pokemon
     {
         return this.m_type;
     }
-
-
-
 }

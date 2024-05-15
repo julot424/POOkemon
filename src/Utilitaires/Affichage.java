@@ -33,6 +33,4 @@ public class Affichage {
     {
         System.out.println(joueur.getDeck().size());
     }
-
-
 }
