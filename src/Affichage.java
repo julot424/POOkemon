@@ -31,4 +31,7 @@ public class Affichage {
     }
 
 
+    public static void afficherTailleDeck(Joueur player) {
+        System.out.println("Taille du deck: ");
+    }
 }

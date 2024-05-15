@@ -1,0 +1,77 @@
+@startuml
+scale 1
+skinparam classFontStyle Bold
+skinparam defaultFontSize 15
+hide empty members
+skinparam classAttribute IconSize 0
+skinparam classFontStyle Bold
+hide enum methods
+
+
+class Pokemon{
+    -m_atk : Integer
+    -m_nom : String
+    -m_PV: Integer
+    -m_type : Type
+    +<<Create>> Pokemon (nom: String, PV: Integer, atk: Integer, type: Type)
+    +getAtk(): Integer
+    +getNom(): String
+    +getPV(): Integer
+    +getType(): Type
+    +attaquer(cible: Pokemon): Boolean
+}
+enum Type{
+        TERRE
+        EAU
+        FEU
+        AIR
+}
+class Utils{
+    -random: Random
+    -m_listePokemon: ArrayList
+    +getRandomFirstPlayer(): Integer
+    +getRandomPV(): Integer
+    +getRandomATK(): Integer
+    +getRandomtype(): Type
+    +getRandomNom(): String
+    +taille(): Integer
+}
+class Joueur{
+    -m_nom: String
+    -m_deck: ArrayList<Pokemon>
+    +<<Create>> Joueur()
+    +getDeck(): ArrayList<Pokemon>
+    +ajouterPokemon(pokemon: Pokemon)
+}
+class Affichage{
+    +afficherDeckJoueur(joueur: Joueur)
+    +afficherDetailsPokemon(pokemon: Pokemon)
+    }
+class Jeu{
+    -m_ia : Joueur
+    -m_user: Joueur
+    +jeuAIFirst()
+    +jeuUserFirst()
+    }
+package Plateau {
+    class Defausse
+    {
+    }
+    class Main
+    {
+    }
+    class Pioche
+    {
+    }
+    class Terrain
+    {
+    }
+}
+
+Joueur "0..1" *-- "*" Pokemon : Possède
+Pokemon "1..1" *-- "*" Type : Possède
+Utils --> Random : Uses
+Jeu --> Joueur : Uses
+Affichage --> Joueur : Uses
+Affichage --> Pokemon : Uses
+@enduml
