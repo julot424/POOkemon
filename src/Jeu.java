@@ -54,4 +54,5 @@ public class Jeu {
             ia.ajouterPokemon(new Pokemon(Utils.getRandomNom(), Utils.getRandomPV(), Utils.getRandomATK(), Utils.getRandomType()));
         }
     }
+
 }

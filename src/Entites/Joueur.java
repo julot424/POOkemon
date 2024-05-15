@@ -35,6 +35,5 @@ public class Joueur {
     {
         this.m_deck.add(pokemon);
     }
-
 }
 

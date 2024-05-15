@@ -6,6 +6,7 @@ import java.util.Random;
 import Entites.Type;
 public class Utils {
 
+
     //ArrayList couleurs = new ArrayList<(Arrays.asList(Rouge, Bleu, Vert));
     private static ArrayList m_listePokemon = new ArrayList(Arrays.asList(
             "Bulbizarre", "Herbizarre", "Florizarre",
