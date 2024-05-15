@@ -1,3 +1,5 @@
+package Entites;
+
 import java.util.ArrayList;
 
 /**
@@ -5,6 +7,7 @@ import java.util.ArrayList;
  */
 public class Joueur {
     // Attributs
+
     private String m_nom;
     private ArrayList<Pokemon> m_deck;
 
@@ -33,3 +36,4 @@ public class Joueur {
         this.m_deck.add(pokemon);
     }
 }
+

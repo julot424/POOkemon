@@ -1,6 +1,9 @@
+package Utilitaires;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import Entites.Type;
 public class Utils {
 
     //ArrayList couleurs = new ArrayList<(Arrays.asList(Rouge, Bleu, Vert));

@@ -1,4 +1,8 @@
+package Utilitaires;
+
 import java.util.ArrayList;
+import Entites.Pokemon;
+import Entites.Joueur;
 
 public class Affichage {
     /**
@@ -18,10 +22,10 @@ public class Affichage {
      * @param pokemon Le Pokémon dont les détails doivent être affichés.
      */
     public static void afficherDetailsPokemon(Pokemon pokemon) {
-        System.out.println("Pokémon: " + pokemon.m_nom);
-        System.out.println("Point de vie: " + pokemon.m_PV);
-        System.out.println("Attaque: " + pokemon.m_atk);
-        System.out.println("Type: " + pokemon.m_type);
+        System.out.println("Pokémon: " + pokemon.getNom());
+        System.out.println("Point de vie: " + pokemon.getPV());
+        System.out.println("Attaque: " + pokemon.getAtk());
+        System.out.println("Type: " + pokemon.getType());
         System.out.println("-------------------------------");
     }
 

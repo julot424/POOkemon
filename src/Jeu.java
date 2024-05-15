@@ -1,4 +1,9 @@
+import Utilitaires.Affichage;
 import jdk.jshell.execution.Util;
+import Entites.Joueur;
+import Entites.Pokemon;
+import Utilitaires.Utils;
+
 
 public class Jeu {
 
