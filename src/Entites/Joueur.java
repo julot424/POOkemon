@@ -1,6 +1,10 @@
 package Entites;
 
+import Plateau.Main;
+import Plateau.Pioche;
+
 import java.util.ArrayList;
+
 
 /**
  * Classe représentant un joueur dans le jeu.
@@ -9,31 +13,53 @@ public class Joueur {
     // Attributs
 
     private String m_nom;
-    private ArrayList<Pokemon> m_deck;
+    private Pioche m_pioche;
+    private Main m_main;
 
     /**
      * Constructeur par défaut de la classe Joueur.
-     * Initialise le deck du joueur.
+     * Initialise la pioche, la main et le terrain du joueur.
      */
     public Joueur() {
-        this.m_deck = new ArrayList<>(); // Initialisation du deck
+        this.m_pioche = new Pioche(); // Initialisation de la pioche
+        this.m_main = new Main(); // Initialisation de la main
     }
 
-    /**
-     * Obtient le deck du joueur.
-     * @return Le deck du joueur.
-     */
-    public ArrayList<Pokemon> getDeck() {
-        return this.m_deck;
-    }
 
     /**
-     * Ajoute un Pokémon au deck du joueur.
-     * @param pokemon Le Pokémon à ajouter.
+     * Ajoute un Pokémon a la pioche du joueur.
+     * @param
      */
-    public void ajouterPokemon(Pokemon pokemon)
+    public void addPokemonToPioche()
     {
-        this.m_deck.add(pokemon);
+        this.m_pioche.initPioche();
     }
+
+    public void remplirMain()
+    {
+        if(this.getTailleMain() != 5)
+        {
+            for(int i = 0; i < 5 - this.getTailleMain(); i++ )
+            {
+                piocher();
+            }
+        }
+    }
+
+    public void piocher()
+    {
+        this.m_main.ajouterPokemon(this.m_pioche.piocher());
+    }
+
+    public int getTailleMain()
+    {
+        return this.m_main.getMain().size();
+    }
+
+    public int gettaillePioche()
+    {
+        return this.m_pioche.getPioche().size();
+    }
+
 }
 

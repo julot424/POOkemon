@@ -14,10 +14,12 @@ public class Jeu {
         System.out.println("Lancement du jeu ...");
         System.out.println("-------------------------------");
 
+
         if(Utils.getRandomFirstPlayer() == 0)
         {
             System.out.println("AI FIRST");
             jeuAIFirst();
+
         }
         else
         {
@@ -25,20 +27,27 @@ public class Jeu {
             jeuUserFirst();
         }
 
-        Affichage.afficherTailleDeck(ia);
-        Affichage.afficherTailleDeck(user);
+        System.out.println("Taille pioche user : " + user.gettaillePioche());
+        System.out.println("Taille main user : " + user.getTailleMain());
+        System.out.println("Taille pioche user : " + ia.gettaillePioche());
+        System.out.println("Taille main user : " + ia.getTailleMain());
+
+
+
     }
 
     public static void jeuAIFirst()
     {
         for(int i = 0; i < 20; i++)
         {
-            ia.ajouterPokemon(new Pokemon(Utils.getRandomNom(), Utils.getRandomPV(), Utils.getRandomATK(), Utils.getRandomType()));
+            ia.addPokemonToPioche();
+            ia.remplirMain();
         }
 
         for(int i = 0; i < 21; i++)
         {
-            user.ajouterPokemon(new Pokemon(Utils.getRandomNom(), Utils.getRandomPV(), Utils.getRandomATK(), Utils.getRandomType()));
+            user.addPokemonToPioche();
+            user.remplirMain();
         }
     }
 
@@ -46,12 +55,14 @@ public class Jeu {
     {
         for(int i = 0; i < 20; i++)
         {
-            user.ajouterPokemon(new Pokemon(Utils.getRandomNom(), Utils.getRandomPV(), Utils.getRandomATK(), Utils.getRandomType()));
+            user.addPokemonToPioche();
+            ia.remplirMain();
         }
 
         for(int i = 0; i < 21; i++)
         {
-            ia.ajouterPokemon(new Pokemon(Utils.getRandomNom(), Utils.getRandomPV(), Utils.getRandomATK(), Utils.getRandomType()));
+            ia.addPokemonToPioche();
+            user.remplirMain();
         }
     }
 
