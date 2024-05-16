@@ -4,6 +4,8 @@ import Entites.Joueur;
 import Entites.Pokemon;
 import Utilitaires.Utils;
 
+import java.util.ArrayList;
+
 public class Jeu {
 
     static Joueur user = new Joueur();
@@ -31,6 +33,11 @@ public class Jeu {
         System.out.println("Taille main user : " + user.getTailleMain());
         System.out.println("Taille pioche user : " + ia.gettaillePioche());
         System.out.println("Taille main user : " + ia.getTailleMain());
+
+        ArrayList<Pokemon> piocheUser = user.getPioche();
+        ArrayList<Pokemon> piocheIa = ia.getPioche();
+
+
 
 
 

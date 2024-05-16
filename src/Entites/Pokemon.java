@@ -22,17 +22,14 @@ public class Pokemon
             if(cible.getType() == Type.TERRE)
             {
                 cible.m_PV -= this.m_atk + 10;
-                return true;
             }
             else if(cible.getType() == Type.FEU)
             {
                 cible.m_PV -= this.m_atk - 10;
-                return true;
             }
             else
             {
                 cible.m_PV -= this.m_atk;
-                return true;
             }
         }
 
@@ -41,17 +38,14 @@ public class Pokemon
             if(cible.getType() == Type.EAU)
             {
                 cible.m_PV -= this.m_atk + 10;
-                return true;
             }
             else if(cible.getType() == Type.AIR)
             {
                 cible.m_PV -= this.m_atk - 10;
-                return true;
             }
             else
             {
                 cible.m_PV -= this.m_atk;
-                return true;
             }
         }
 
@@ -60,17 +54,14 @@ public class Pokemon
             if(cible.getType() == Type.FEU)
             {
                 cible.m_PV -= this.m_atk + 10;
-                return true;
             }
             else if(cible.getType() == Type.TERRE)
             {
                 cible.m_PV -= this.m_atk - 10;
-                return true;
             }
             else
             {
                 cible.m_PV -= this.m_atk;
-                return true;
             }
         }
 
@@ -79,20 +70,30 @@ public class Pokemon
             if(cible.getType() == Type.AIR)
             {
                 cible.m_PV -= this.m_atk + 10;
-                return true;
             }
             else if(cible.getType() == Type.EAU)
             {
                 cible.m_PV -= this.m_atk - 10;
-                return true;
             }
             else
             {
                 cible.m_PV -= this.m_atk;
-                return true;
             }
         }
 
+        if(cible.getPV() <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean estMort()
+    {
+        if (this.getPV() <= 0)
+        {
+            return true;
+        }
         return false;
     }
 

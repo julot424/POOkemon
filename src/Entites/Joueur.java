@@ -1,5 +1,6 @@
 package Entites;
 
+import Plateau.Defausse;
 import Plateau.Main;
 import Plateau.Pioche;
 
@@ -15,6 +16,7 @@ public class Joueur {
     private String m_nom;
     private Pioche m_pioche;
     private Main m_main;
+    private Defausse m_defausse;
 
     /**
      * Constructeur par défaut de la classe Joueur.
@@ -23,6 +25,7 @@ public class Joueur {
     public Joueur() {
         this.m_pioche = new Pioche(); // Initialisation de la pioche
         this.m_main = new Main(); // Initialisation de la main
+        this.m_defausse = new Defausse(); //Initialisation de la défausse
     }
 
 
@@ -59,6 +62,11 @@ public class Joueur {
     public int gettaillePioche()
     {
         return this.m_pioche.getPioche().size();
+    }
+
+    public ArrayList<Pokemon> getPioche()
+    {
+        return this.m_pioche.getPioche();
     }
 
 }
