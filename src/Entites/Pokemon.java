@@ -17,85 +17,22 @@ public class Pokemon
 
     public boolean attaquer(Pokemon cible)
     {
-        if(this.getType() == Type.AIR)
+        if((this.getType() == Type.EAU && cible.getType() == Type.FEU) || (this.getType() == Type.AIR && cible.getType() == Type.TERRE) || (this.getType() == Type.TERRE && cible.getType() == Type.EAU) || (this.getType() == Type.FEU && cible.getType() == Type.AIR))
         {
-            if(cible.getType() == Type.TERRE)
-            {
-                cible.m_PV -= this.m_atk + 10;
-            }
-            else if(cible.getType() == Type.FEU)
-            {
-                cible.m_PV -= this.m_atk - 10;
-            }
-            else
-            {
-                cible.m_PV -= this.m_atk;
-            }
+            cible.m_PV -= this.getAtk() + 10;
+            return cible.m_PV <= 0;
         }
 
-        if(this.getType() == Type.TERRE)
+        else if((this.getType() == Type.FEU && cible.getType() == Type.EAU) || (this.getType() == Type.TERRE && cible.getType() == Type.AIR) || (this.getType() == Type.EAU && cible.getType() == Type.TERRE) || (this.getType() == Type.AIR && cible.getType() == Type.FEU))
         {
-            if(cible.getType() == Type.EAU)
-            {
-                cible.m_PV -= this.m_atk + 10;
-            }
-            else if(cible.getType() == Type.AIR)
-            {
-                cible.m_PV -= this.m_atk - 10;
-            }
-            else
-            {
-                cible.m_PV -= this.m_atk;
-            }
+            cible.m_PV -= this.getAtk() -10;
+            return cible.m_PV <= 0;
         }
 
-        if(this.getType() == Type.EAU)
-        {
-            if(cible.getType() == Type.FEU)
-            {
-                cible.m_PV -= this.m_atk + 10;
-            }
-            else if(cible.getType() == Type.TERRE)
-            {
-                cible.m_PV -= this.m_atk - 10;
-            }
-            else
-            {
-                cible.m_PV -= this.m_atk;
-            }
-        }
-
-        if(this.getType() == Type.FEU)
-        {
-            if(cible.getType() == Type.AIR)
-            {
-                cible.m_PV -= this.m_atk + 10;
-            }
-            else if(cible.getType() == Type.EAU)
-            {
-                cible.m_PV -= this.m_atk - 10;
-            }
-            else
-            {
-                cible.m_PV -= this.m_atk;
-            }
-        }
-
-        if(cible.getPV() <= 0)
-        {
-            return true;
-        }
-        return false;
+        cible.m_PV -= this.getAtk();
+        return cible.m_PV <= 0;
     }
 
-    private boolean estMort()
-    {
-        if(this.getPV() <= 0)
-        {
-            return true;
-        }
-        return false;
-    }
 
     public String getNom()
     {

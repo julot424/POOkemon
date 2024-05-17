@@ -1,12 +1,11 @@
 import Entites.Bot;
 import Entites.Joueur;
-import Entites.User;
 import Utilitaires.Utils;
 import java.util.Scanner;
 
 public class Jeu {
 
-    static Joueur user = new User();
+    static Joueur user = new Joueur();
     static Joueur ia = new Bot();
 
 
