@@ -1,15 +1,13 @@
-import Utilitaires.Affichage;
-import jdk.jshell.execution.Util;
+import Entites.Bot;
 import Entites.Joueur;
-import Entites.Pokemon;
+import Entites.User;
 import Utilitaires.Utils;
-
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Jeu {
 
-    static Joueur user = new Joueur();
-    static Joueur ia = new Joueur();
+    static Joueur user = new User();
+    static Joueur ia = new Bot();
 
 
     public static void main(String[] args) {
@@ -31,15 +29,13 @@ public class Jeu {
 
         System.out.println("Taille pioche user : " + user.gettaillePioche());
         System.out.println("Taille main user : " + user.getTailleMain());
-        System.out.println("Taille pioche user : " + ia.gettaillePioche());
-        System.out.println("Taille main user : " + ia.getTailleMain());
-
-        ArrayList<Pokemon> piocheUser = user.getPioche();
-        ArrayList<Pokemon> piocheIa = ia.getPioche();
+        System.out.println("Taille pioche IA : " + ia.gettaillePioche());
+        System.out.println("Taille main IA : " + ia.getTailleMain());
 
 
-
-
+        System.out.println(user.getPioche().get(0).getPV());
+        ia.getPioche().get(0).attaquer(user.getPioche().get(0));
+        System.out.println(user.getPioche().get(0).getPV());
 
     }
 
@@ -63,13 +59,13 @@ public class Jeu {
         for(int i = 0; i < 20; i++)
         {
             user.addPokemonToPioche();
-            ia.remplirMain();
+            user.remplirMain();
         }
 
         for(int i = 0; i < 21; i++)
         {
             ia.addPokemonToPioche();
-            user.remplirMain();
+            ia.remplirMain();
         }
     }
 

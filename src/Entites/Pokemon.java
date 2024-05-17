@@ -90,7 +90,7 @@ public class Pokemon
 
     private boolean estMort()
     {
-        if (this.getPV() <= 0)
+        if(this.getPV() <= 0)
         {
             return true;
         }

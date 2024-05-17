@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Classe représentant un joueur dans le jeu.
  */
-public class Joueur {
+public abstract class Joueur {
     // Attributs
 
     private String m_nom;
@@ -68,6 +68,8 @@ public class Joueur {
     {
         return this.m_pioche.getPioche();
     }
+
+    public abstract void tour();
 
 }
 
