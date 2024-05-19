@@ -3,7 +3,9 @@ package Entites;
 import Plateau.Defausse;
 import Plateau.Main;
 import Plateau.Pioche;
+import Plateau.Terrain;
 
+import java.util.Scanner;
 import java.util.ArrayList;
 
 
@@ -17,6 +19,7 @@ public class Joueur {
     private Pioche m_pioche;
     private Main m_main;
     private Defausse m_defausse;
+    private Terrain m_terrain;
 
     /**
      * Constructeur par défaut de la classe Joueur.
@@ -26,7 +29,10 @@ public class Joueur {
         this.m_pioche = new Pioche(); // Initialisation de la pioche
         this.m_main = new Main(); // Initialisation de la main
         this.m_defausse = new Defausse(); //Initialisation de la défausse
+        this.m_terrain = new Terrain(); //Initialisation du terrain
     }
+
+    Scanner scnr = new Scanner(System.in);
 
 
     /**
@@ -75,7 +81,52 @@ public class Joueur {
 
     public void setupTerrain()
     {
+        System.out.println("Choisissez vos Pokemons de départ parmi : " + "\n\n" +this.m_main.afficheMain());
 
+        for(int i = 0; i < 3; i++ )
+        {
+            if(i == 0)
+            {
+                System.out.println("Votre 1er choix :");
+            }
+
+            else if(i == 1)
+            {
+                System.out.println("Votre 2nd choix :");
+            }
+
+            else if (i == 2)
+            {
+                System.out.println("Votre 3ème choix :");
+            }
+
+            addToTerrainFromMain();
+        }
+
+        System.out.println("Votre terrain est composer de : " + this.m_terrain.afficheTerrain());
+    }
+
+    private boolean estJuste(int nbr)
+    {
+        if(nbr <= 0  || nbr > 5)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public void addToTerrainFromMain()
+    {
+        int chx = -1;
+        chx = scnr.nextInt();
+
+        while (!estJuste(chx))
+        {
+            System.out.println("Veuillez entrez un chiffre compris entre 0 et 5 !");
+            chx = scnr.nextInt();
+        }
+
+        this.m_terrain.getTerrain().add(this.m_main.getMain().remove(chx - 1));
     }
 }
 

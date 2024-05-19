@@ -28,13 +28,6 @@ public class Jeu {
 
         System.out.println("Taille pioche user : " + user.gettaillePioche());
         System.out.println("Taille main user : " + user.getTailleMain());
-        System.out.println("Taille pioche IA : " + ia.gettaillePioche());
-        System.out.println("Taille main IA : " + ia.getTailleMain());
-
-
-        System.out.println(user.getPioche().get(0).getPV());
-        ia.getPioche().get(0).attaquer(user.getMain().get(0));
-        System.out.println(user.getPioche().get(0).getPV());
 
     }
 
@@ -45,12 +38,15 @@ public class Jeu {
             ia.addPokemonToPioche();
             ia.remplirMain();
         }
+        ia.setupTerrain();
+
 
         for(int i = 0; i < 21; i++)
         {
             user.addPokemonToPioche();
             user.remplirMain();
         }
+        user.setupTerrain();
 
         startGame(ia, user);
     }
@@ -61,18 +57,20 @@ public class Jeu {
         {
             user.addPokemonToPioche();
             user.remplirMain();
-            user.setupTerrain();
         }
+        user.setupTerrain();
 
         for(int i = 0; i < 21; i++)
         {
             ia.addPokemonToPioche();
             ia.remplirMain();
         }
+        ia.setupTerrain();
     }
 
     public static void startGame(Joueur j1, Joueur j2)
     {
+        //j1 = joue en 1er et j2 joue en 2ᵉ
 
     }
 
