@@ -73,10 +73,9 @@ public class Joueur {
         return this.m_main.getMain();
     }
 
-    public void tour()
+    public void setupTerrain()
     {
 
     }
-
 }
 

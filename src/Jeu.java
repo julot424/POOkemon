@@ -61,6 +61,7 @@ public class Jeu {
         {
             user.addPokemonToPioche();
             user.remplirMain();
+            user.setupTerrain();
         }
 
         for(int i = 0; i < 21; i++)
