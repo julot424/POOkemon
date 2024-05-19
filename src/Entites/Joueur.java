@@ -30,7 +30,7 @@ public class Joueur {
 
 
     /**
-     * Ajoute un Pokémon a la pioche du joueur.
+     * Ajoute un Pokémon à la pioche du joueur.
      * @param
      */
     public void addPokemonToPioche()
@@ -67,6 +67,10 @@ public class Joueur {
     public ArrayList<Pokemon> getPioche()
     {
         return this.m_pioche.getPioche();
+    }
+    public ArrayList<Pokemon> getMain()
+    {
+        return this.m_main.getMain();
     }
 
     public void tour()

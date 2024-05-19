@@ -33,7 +33,7 @@ public class Jeu {
 
 
         System.out.println(user.getPioche().get(0).getPV());
-        ia.getPioche().get(0).attaquer(user.getPioche().get(0));
+        ia.getPioche().get(0).attaquer(user.getMain().get(0));
         System.out.println(user.getPioche().get(0).getPV());
 
     }
@@ -51,6 +51,8 @@ public class Jeu {
             user.addPokemonToPioche();
             user.remplirMain();
         }
+
+        startGame(ia, user);
     }
 
     public static void jeuUserFirst()
@@ -66,6 +68,11 @@ public class Jeu {
             ia.addPokemonToPioche();
             ia.remplirMain();
         }
+    }
+
+    public static void startGame(Joueur j1, Joueur j2)
+    {
+
     }
 
 }
