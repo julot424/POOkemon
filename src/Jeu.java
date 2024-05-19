@@ -21,10 +21,6 @@ public class Jeu {
             jeuUserFirst();
         }
 
-        Affichage.afficherTailleDeck(ia);
-        Affichage.afficherTailleDeck(user);
-
-
     }
 
     public static void jeuAIFirst()
