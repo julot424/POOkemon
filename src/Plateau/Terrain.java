@@ -23,7 +23,7 @@ public class Terrain
             resultat += m_terrain.get(i).getNom() + ", ";
         }
 
-        return resultat;
+        return resultat.substring(0, resultat.length() - 2);
     }
 
     public ArrayList<Pokemon> getTerrain()

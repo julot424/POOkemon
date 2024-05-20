@@ -46,9 +46,9 @@ public class Joueur {
 
     public void remplirMain()
     {
-        if(this.getTailleMain() != 5)
+        if(this.getTailleMain() < 5)
         {
-            for(int i = 0; i < 5 - this.getTailleMain(); i++ )
+            for(int i = this.getTailleMain(); i < 5 ; i++ )
             {
                 piocher();
             }
@@ -81,22 +81,23 @@ public class Joueur {
 
     public void setupTerrain()
     {
-        System.out.println("Choisissez vos Pokemons de départ parmi : " + "\n\n" +this.m_main.afficheMain());
-
         for(int i = 0; i < 3; i++ )
         {
             if(i == 0)
             {
+                System.out.println("Choisissez vos Pokemons de départ parmi : " + "\n\n" +this.m_main.afficheMain());
                 System.out.println("Votre 1er choix :");
             }
 
             else if(i == 1)
             {
+                System.out.println("Choisissez vos Pokemons de départ parmi : " + "\n\n" +this.m_main.afficheMain());
                 System.out.println("Votre 2nd choix :");
             }
 
             else if (i == 2)
             {
+                System.out.println("Choisissez vos Pokemons de départ parmi : " + "\n\n" +this.m_main.afficheMain());
                 System.out.println("Votre 3ème choix :");
             }
 
@@ -104,11 +105,12 @@ public class Joueur {
         }
 
         System.out.println("Votre terrain est composer de : " + this.m_terrain.afficheTerrain());
+        this.remplirMain();
     }
 
     private boolean estJuste(int nbr)
     {
-        if(nbr <= 0  || nbr > 5)
+        if(nbr <= 0  || nbr > this.m_main.getMain().size())
         {
             return false;
         }
@@ -122,7 +124,7 @@ public class Joueur {
 
         while (!estJuste(chx))
         {
-            System.out.println("Veuillez entrez un chiffre compris entre 0 et 5 !");
+            System.out.println("Veuillez entrez un chiffre compris entre 1 et " + this.m_main.getMain().size() + " !");
             chx = scnr.nextInt();
         }
 

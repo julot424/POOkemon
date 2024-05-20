@@ -1,12 +1,12 @@
 import Entites.Bot;
 import Entites.Joueur;
 import Utilitaires.Utils;
-import java.util.Scanner;
+
 
 public class Jeu {
 
     static Joueur user = new Joueur();
-    static Joueur ia = new Bot();
+    static Bot ia = new Bot();
 
 
     public static void main(String[] args) {
@@ -26,8 +26,10 @@ public class Jeu {
             jeuUserFirst();
         }
 
-        System.out.println("Taille pioche user : " + user.gettaillePioche());
+        System.out.println("\n\n Taille pioche user : " + user.gettaillePioche());
         System.out.println("Taille main user : " + user.getTailleMain());
+        System.out.println("Taille pioche ia : " + ia.gettaillePioche());
+        System.out.println("Taille main ia : " + ia.getTailleMain());
 
     }
 
@@ -47,6 +49,7 @@ public class Jeu {
             user.remplirMain();
         }
         user.setupTerrain();
+        ia.afficheTaillePiocheBot();
 
         startGame(ia, user);
     }
@@ -66,7 +69,14 @@ public class Jeu {
             ia.remplirMain();
         }
         ia.setupTerrain();
+
+        ia.afficheTaillePiocheBot();
+
+        startGame(user, ia);
     }
+
+
+
 
     public static void startGame(Joueur j1, Joueur j2)
     {
