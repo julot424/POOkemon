@@ -17,18 +17,13 @@ public class Bot extends Joueur
      * Constructeur par défaut de la classe Bot.
      * Initialise la pioche, la main et le terrain du joueur.
      */
+
     public Bot() {
         this.m_pioche = new Pioche(); // Initialisation de la pioche
         this.m_main = new Main(); // Initialisation de la main
         this.m_defausse = new Defausse(); //Initialisation de la défausse
         this.m_terrain = new Terrain(); //Initialisation du terrain
     }
-
-    public void afficheTaillePiocheBot()
-    {
-        System.out.println("La taille de la pioche du bot est de :" +this.m_pioche.getPioche().size());
-    }
-
 
     public void setupTerrain()
     {

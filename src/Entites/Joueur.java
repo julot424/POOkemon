@@ -14,8 +14,6 @@ import java.util.ArrayList;
  */
 public class Joueur {
     // Attributs
-
-    private String m_nom;
     private Pioche m_pioche;
     private Main m_main;
     private Defausse m_defausse;
@@ -25,7 +23,8 @@ public class Joueur {
      * Constructeur par défaut de la classe Joueur.
      * Initialise la pioche, la main et le terrain du joueur.
      */
-    public Joueur() {
+    public Joueur()
+    {
         this.m_pioche = new Pioche(); // Initialisation de la pioche
         this.m_main = new Main(); // Initialisation de la main
         this.m_defausse = new Defausse(); //Initialisation de la défausse
@@ -81,24 +80,25 @@ public class Joueur {
 
     public void setupTerrain()
     {
+        String chx = "";
+
         for(int i = 0; i < 3; i++ )
         {
+            chx ="Choisissez vos Pokemons de départ parmi : " + "\n\n" +this.m_main.afficheMain();
+
             if(i == 0)
             {
-                System.out.println("Choisissez vos Pokemons de départ parmi : " + "\n\n" +this.m_main.afficheMain());
-                System.out.println("Votre 1er choix :");
+                System.out.println("Choisissez votre 1er Pokemon parmi :\n\n" + this.m_main.afficheMain());
             }
 
             else if(i == 1)
             {
-                System.out.println("Choisissez vos Pokemons de départ parmi : " + "\n\n" +this.m_main.afficheMain());
-                System.out.println("Votre 2nd choix :");
+                System.out.println("Choisissez votre 2nd Pokemon parmi :\n\n" + this.m_main.afficheMain());
             }
 
             else if (i == 2)
             {
-                System.out.println("Choisissez vos Pokemons de départ parmi : " + "\n\n" +this.m_main.afficheMain());
-                System.out.println("Votre 3ème choix :");
+                System.out.println("Choisissez votre 3ème Pokemon parmi :\n\n" + this.m_main.afficheMain());
             }
 
             addToTerrainFromMain();
@@ -130,5 +130,6 @@ public class Joueur {
 
         this.m_terrain.getTerrain().add(this.m_main.getMain().remove(chx - 1));
     }
+
 }
 
