@@ -30,4 +30,9 @@ public class Terrain
     {
         return this.m_terrain;
     }
+
+    public int getTailleTerrain()
+    {
+        return this.m_terrain.size();
+    }
 }

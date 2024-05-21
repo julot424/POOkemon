@@ -20,16 +20,22 @@ public class Pokemon
         if((this.getType() == Type.EAU && cible.getType() == Type.FEU) || (this.getType() == Type.AIR && cible.getType() == Type.TERRE) || (this.getType() == Type.TERRE && cible.getType() == Type.EAU) || (this.getType() == Type.FEU && cible.getType() == Type.AIR))
         {
             cible.m_PV -= this.getAtk() + 10;
+            System.out.println(this.getNom() + " est en avantage de type, il inflige à " + cible.getNom() + " " + (this.m_atk + 10) + " dégâts");
+
             return cible.m_PV <= 0;
         }
 
         else if((this.getType() == Type.FEU && cible.getType() == Type.EAU) || (this.getType() == Type.TERRE && cible.getType() == Type.AIR) || (this.getType() == Type.EAU && cible.getType() == Type.TERRE) || (this.getType() == Type.AIR && cible.getType() == Type.FEU))
         {
             cible.m_PV -= this.getAtk() -10;
+            System.out.println(this.getNom() + " est en désavantage de type, il inflige à " + cible.getNom() + " " + (this.m_atk - 10) + " dégâts");
+
             return cible.m_PV <= 0;
         }
 
         cible.m_PV -= this.getAtk();
+        System.out.println(this.getNom() + " attaque " + cible.getNom() + " et lui inflige " + this.m_atk + " dégâts");
+
         return cible.m_PV <= 0;
     }
 
@@ -38,6 +44,7 @@ public class Pokemon
     {
         return this.m_nom;
     }
+
     public int getAtk()
     {
         return this.m_atk;
@@ -52,5 +59,7 @@ public class Pokemon
     {
         return this.m_type;
     }
+
+
 
 }

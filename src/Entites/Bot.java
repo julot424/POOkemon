@@ -5,6 +5,8 @@ import Plateau.Main;
 import Plateau.Pioche;
 import Plateau.Terrain;
 
+import javax.rmi.ssl.SslRMIClientSocketFactory;
+
 public class Bot extends Joueur
 {
 
@@ -75,5 +77,18 @@ public class Bot extends Joueur
     public int gettaillePioche()
     {
         return this.m_pioche.getPioche().size();
+    }
+
+    public void naration()
+    {
+        System.out.println("Au tour de l'adversaire !\n");
+    }
+
+    public void attaquer(Joueur cible)
+    {
+        for(int i = 0; i < this.m_terrain.getTailleTerrain(); i++)
+        {
+            this.m_terrain.getTerrain().get(i).attaquer(cible.getTerrain().get(cible.getAvantage(this.m_terrain.getTerrain().get(i), cible)));
+        }
     }
 }

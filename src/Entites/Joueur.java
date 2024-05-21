@@ -4,7 +4,6 @@ import Plateau.Defausse;
 import Plateau.Main;
 import Plateau.Pioche;
 import Plateau.Terrain;
-
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -36,7 +35,7 @@ public class Joueur {
 
     /**
      * Ajoute un Pokémon à la pioche du joueur.
-     * @param
+     *
      */
     public void addPokemonToPioche()
     {
@@ -47,10 +46,12 @@ public class Joueur {
     {
         if(this.getTailleMain() < 5)
         {
-            for(int i = this.getTailleMain(); i < 5 ; i++ )
+            int i = 0;
+            for( i = this.getTailleMain(); i < 5 ; i++ )
             {
                 piocher();
             }
+            System.out.println("Vous piochez " + i + " fois pour remplir votre main !\n");
         }
     }
 
@@ -64,19 +65,16 @@ public class Joueur {
         return this.m_main.getMain().size();
     }
 
-    public int gettaillePioche()
-    {
-        return this.m_pioche.getPioche().size();
-    }
-
-    public ArrayList<Pokemon> getPioche()
-    {
-        return this.m_pioche.getPioche();
-    }
-    public ArrayList<Pokemon> getMain()
+    /*public ArrayList<Pokemon> getMain()
     {
         return this.m_main.getMain();
+    }*/
+
+    public ArrayList<Pokemon> getTerrain()
+    {
+        return this.m_terrain.getTerrain();
     }
+
 
     public void setupTerrain()
     {
@@ -88,23 +86,23 @@ public class Joueur {
 
             if(i == 0)
             {
-                System.out.println("Choisissez votre 1er Pokemon parmi :\n\n" + this.m_main.afficheMain());
+                System.out.println(chx);
             }
 
             else if(i == 1)
             {
-                System.out.println("Choisissez votre 2nd Pokemon parmi :\n\n" + this.m_main.afficheMain());
+                System.out.println(chx);
             }
 
-            else if (i == 2)
+            else
             {
-                System.out.println("Choisissez votre 3ème Pokemon parmi :\n\n" + this.m_main.afficheMain());
+                System.out.println(chx);
             }
 
             addToTerrainFromMain();
         }
 
-        System.out.println("Votre terrain est composer de : " + this.m_terrain.afficheTerrain());
+        System.out.println("Votre terrain est composer de : " + this.m_terrain.afficheTerrain() + "\n");
         this.remplirMain();
     }
 
@@ -131,5 +129,55 @@ public class Joueur {
         this.m_terrain.getTerrain().add(this.m_main.getMain().remove(chx - 1));
     }
 
+    public void setupMain()
+    {
+        if(this.getTailleMain() < 5)
+        {
+            int i = 0;
+            for( i = this.getTailleMain(); i < 5 ; i++ )
+            {
+                piocher();
+            }}
+    }
+
+    public void naration()
+    {
+        System.out.println("A votre tour de jouer !\n");
+    }
+
+
+
+    public void attaquer(Joueur cible)
+    {
+
+    }
+
+    protected int getAvantage(Pokemon attaquant, Joueur cible)
+    {
+        ArrayList<Boolean> listAvantage = new ArrayList<>();
+
+        for(int i = 0; i < cible.getTerrain().size(); i++)
+        {
+            if((attaquant.getType() == Type.EAU && cible.getTerrain().get(i).getType() == Type.FEU) || (attaquant.getType() == Type.AIR && cible.getTerrain().get(i).getType() == Type.TERRE) || (attaquant.getType() == Type.TERRE && cible.getTerrain().get(i).getType() == Type.EAU) || (attaquant.getType() == Type.FEU && cible.getTerrain().get(i).getType() == Type.AIR))
+            {
+                listAvantage.add(true);
+            }
+
+            else
+            {
+                listAvantage.add(false);
+            }
+        }
+
+        for(int i = 0; listAvantage.size() > i; i++ )
+        {
+            if(listAvantage.get(i))
+            {
+                return i;
+            }
+        }
+        return 0;
+
+    }
 }
 

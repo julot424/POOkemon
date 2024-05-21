@@ -1,10 +1,7 @@
 import Entites.Bot;
 import Entites.Joueur;
 import Utilitaires.Utils;
-
 import java.util.Scanner;
-
-import static java.lang.Thread.*;
 
 
 public class Jeu {
@@ -53,6 +50,16 @@ public class Jeu {
             }
 
             System.out.println("Votre adversaire joue en 1er\n");
+
+            try
+            {
+                Thread.sleep(500);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+
             jeuAIFirst();
 
         }
@@ -103,7 +110,7 @@ public class Jeu {
         for(int i = 0; i < 21; i++)
         {
             user.addPokemonToPioche();
-            user.remplirMain();
+            user.setupMain();
         }
         user.setupTerrain();
 
@@ -116,7 +123,7 @@ public class Jeu {
         for(int i = 0; i < 20; i++)
         {
             user.addPokemonToPioche();
-            user.remplirMain();
+            user.setupMain();
         }
         user.setupTerrain();
 
@@ -137,6 +144,18 @@ public class Jeu {
     public static void startGame(Joueur j1, Joueur j2)
     {
         //j1 = joue en 1er et j2 joue en 2ᵉ
+        j1.remplirMain();//On pioche une ou des cartes si la main n'est pas complète
+        j2.remplirMain();
+
+        j1.naration(); //On affiche à quel joueur de jouer
+
+        j1.attaquer(j2);
+
+
+
+
+
+        j2.naration();
 
     }
 
