@@ -1,0 +1,146 @@
+@startuml
+scale 1
+skinparam classFontStyle Bold
+skinparam defaultFontSize 15
+hide empty members
+skinparam classAttribute IconSize 0
+skinparam classFontStyle Bold
+hide enum methods
+
+
+
+class Jeu
+{
+    +main()
+    -estPret() Boolean
+    +jeuAIFirst()
+    +jeuUserFirst()
+    +startGame()
+}
+
+package Entites
+{
+    class Bot
+    {
+        -m_pioche :Pioche
+        -m_main :Main
+        -m_defausse :Defause
+        -m_terrain Terrain
+
+        +<<Create>> Bot()
+        +setupTerrain()
+        +addToTerrainFromMain()
+        +piocher()
+        +remplirMain()
+        +addPokemonToPioche()
+        +getTailleMain() :Integer
+        +narration()
+        +attaquer(cilbe: Joueur)
+    }
+
+    class Joueur
+    {
+        -m_pioche :Pioche
+        -m_main :Main
+        -m_defausse :Defause
+        -m_terrain Terrain
+
+        +<<Create>> Joueur()
+        +addPokemonToPioche()
+        +remplirMain()
+        +piocher()
+        +getTailleMain() :Integer
+        +getTerrain() :ArrayList<Pokemon>
+        +setupTerrain()
+        +estJuste() :Boolean
+        +addToTerrainFromMain()
+        +setupMain()
+        +narration()
+        +attaquer(cible Joueur)
+        +estMort(cible :Pokemon)
+        #getAvantage() :Integer
+        +getPioche() :ArrayList<Pokemon>
+        +getMain() :ArrayList<Pokemon>
+        +afficheTerrain()
+    }
+
+    class Pokemon
+    {
+        -m_nom :String
+        -m_PV :Integer
+        -m_atk :Integer
+        -m_type :Type
+
+        <<Create>> Pokemon(nom :String, pv :Integer, atk :Integer, type :Type)
+        +attaquer(cible :Pokemon) :Boolean
+        +getNom() :String
+        +getAtk() :Integer
+        +getPV() :Integer
+        +getType() :Tyep
+    }
+
+    enum Type
+    {
+        TERRE
+        EAU
+        FEU
+        AIR
+    }
+}
+
+package Plateau
+{
+    class Defause
+    {
+        -m_defausse :ArrayList<Pokemon>
+        +<<Create>> Defause()
+        +addToDefause
+    }
+
+    class Main
+    {
+        -m_main :ArrayList<Pokemon>
+        <<Create>> Main()
+        +ajouterPokemon(pokemon :Pokemon)
+        +getMain :ArrayList<Pokemon>
+        +delFromMain(i :Integer) :Pokemon
+        +afficheMain()
+    }
+
+    class Pioche
+    {
+        -m_pioche :ArrayList<Pokemon>
+        +<<Create>> Pioche()
+        +initPioche()
+        +getPioche()
+        +piocher() :Pokemon
+    }
+
+    class Terrain
+    {
+        -m_terrain :ArrayList<Pokemon>
+        +<<Create>> Pioche()
+        +afficheTerrain() :String
+        +getTerrain() :ArrayList<Pokemon>
+        +getTailleTerrain() :Integer
+        +delFromTerrain(cible :Pokemon)
+        +addToTerrain(pokemon :Pokemon)
+        +getPokemonFromTerrain(i :Integer)
+    }
+}
+
+package Utilitaires
+{
+    class Utils
+    {
+        -m_listePokemon :ArrayList<String>
+        -random :Random
+        +getRandomPV() :Integer
+        +getRandomATK() :Integer
+        +getRandomType() :Type
+        +getRandomNom() :String
+        +getRandomFirstPlayer() :Integer
+    }
+}
+
+@enduml
