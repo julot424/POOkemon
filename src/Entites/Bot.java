@@ -10,10 +10,10 @@ import java.util.ArrayList;
 public class Bot extends Joueur
 {
 
-    private Pioche m_pioche;
-    private Main m_main;
-    private Defausse m_defausse;
-    private Terrain m_terrain;
+    private final Pioche m_pioche;
+    private final Main m_main;
+    private final Defausse m_defausse;
+    private final Terrain m_terrain;
 
     /**
      * Constructeur par défaut de la classe Bot.
@@ -72,11 +72,6 @@ public class Bot extends Joueur
     public int getTailleMain()
     {
         return this.m_main.getMain().size();
-    }
-
-    public int gettaillePioche()
-    {
-        return this.m_pioche.getPioche().size();
     }
 
     public void narration()
@@ -149,11 +144,12 @@ public class Bot extends Joueur
         }
     }
 
-    public void finJeu()
+    public void finJeu(Joueur cible)
     {
         if(this.getMain().isEmpty() && this.getTerrain().isEmpty() && this.getPioche().isEmpty())
         {
-            System.out.println("----------VOUS AVEZ GAGNER !----------");
+            int reste = cible.getTerrain().size() + cible.getMain().size() + cible.getPioche().size();
+            System.out.println("----------VOUS AVEZ GAGNER !----------\nIl restait " + reste + " Pokémons dans votre jeu !");
         }
     }
 

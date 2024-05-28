@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Terrain
 {
-    private ArrayList<Pokemon> m_terrain;
+    private final ArrayList<Pokemon> m_terrain;
 
     public Terrain()
     {

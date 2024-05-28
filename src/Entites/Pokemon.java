@@ -2,10 +2,10 @@ package Entites;
 
 public class Pokemon
 {
-    private String m_nom;
+    private final String m_nom;
     private int m_PV;
-    private int m_atk;
-    private Type m_type;
+    private final int m_atk;
+    private final Type m_type;
 
     public Pokemon(String nom, int PV, int atk, Type type)
     {

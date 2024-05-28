@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Defausse
 {
-    private ArrayList<Pokemon> m_defausse;
+    private final ArrayList<Pokemon> m_defausse;
 
     public Defausse()
     {

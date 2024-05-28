@@ -5,7 +5,7 @@ import Utilitaires.Utils;
 import java.util.ArrayList;
 public class Pioche
 {
-    private ArrayList<Pokemon> m_pioche;
+    private final ArrayList<Pokemon> m_pioche;
 
     public Pioche()
     {
@@ -14,7 +14,7 @@ public class Pioche
 
     public void initPioche()
     {
-        this.m_pioche.add(new Pokemon(Utils.getRandomNom(), Utils.getRandomPV(), 10000, Utils.getRandomType()));
+        this.m_pioche.add(new Pokemon(Utils.getRandomNom(), Utils.getRandomPV(), Utils.getRandomATK(), Utils.getRandomType()));
     }
 
     public ArrayList<Pokemon> getPioche()

@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 public class Joueur {
     // Attributs
-    private Pioche m_pioche;
-    private Main m_main;
-    private Defausse m_defausse;
-    private Terrain m_terrain;
+    private final Pioche m_pioche;
+    private final Main m_main;
+    private final Defausse m_defausse;
+    private final Terrain m_terrain;
 
     /**
      * Constructeur par défaut de la classe Joueur.
@@ -46,7 +46,7 @@ public class Joueur {
     {
         if(this.getTailleMain() < 5)
         {
-            int i = 0;
+            int i;
             int y = 0;
             for(i = this.getTailleMain(); i < 5; i++ )
             {
@@ -75,7 +75,7 @@ public class Joueur {
 
     public void setupTerrain()
     {
-        String chx = "";
+        String chx;
 
         for(int i = 0; i < 3; i++)
         {
@@ -109,7 +109,7 @@ public class Joueur {
 
     public void addToTerrainFromMain()
     {
-        int chx = -1;
+        int chx;
         chx = scnr.nextInt();
 
         while (!estJusteMain(chx))
@@ -125,7 +125,7 @@ public class Joueur {
     {
         if(this.getTailleMain() < 5)
         {
-            int i = 0;
+            int i;
             for( i = this.getTailleMain(); i < 5 ; i++ )
             {
                 piocher();
@@ -242,21 +242,28 @@ public class Joueur {
         {
             for(int i = this.m_terrain.getTerrain().size(); i < 3; i++)
             {
-                System.out.println("Choisissez un pokemon de votre main pour remplir votre terrain !\n");
-                System.out.println(this.m_main.afficheMain());
-                addToTerrainFromMain();
+                if(!this.getMain().isEmpty())
+                {
+                    System.out.println("Choisissez un pokemon de votre main pour remplir votre terrain !\n");
+                    System.out.println(this.m_main.afficheMain());
+                    addToTerrainFromMain();
+                }
+
+                else
+                {
+                    break;
+                }
             }
-
-
         }
     }
 
 
-    public void finJeu()
+    public void finJeu(Joueur cible)
     {
         if(this.getTerrain().isEmpty() && this.getMain().isEmpty() && this.getPioche().isEmpty())
         {
-            System.out.println("----------GAME OVER !----------");
+            int reste = cible.getTerrain().size() + cible.getMain().size() + cible.getPioche().size();
+            System.out.println("----------GAME OVER !----------\nIl restait " + reste + " Pokémons dans le jeu adverse !");
         }
     }
 

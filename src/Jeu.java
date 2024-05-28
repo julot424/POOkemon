@@ -169,8 +169,8 @@ public class Jeu {
                 System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                 i++;
             }
-            j1.finJeu();
-            j2.finJeu();
+            j1.finJeu(j2);
+            j2.finJeu(j1);
             System.out.println("FIN DU JEU");
     }
 

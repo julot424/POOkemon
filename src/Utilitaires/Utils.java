@@ -8,7 +8,7 @@ public class Utils {
 
 
     //ArrayList couleurs = new ArrayList<(Arrays.asList(Rouge, Bleu, Vert));
-    private static ArrayList<String> m_listePokemon = new ArrayList<String>(Arrays.asList(
+    private static final ArrayList<String> m_listePokemon = new ArrayList<>(Arrays.asList(
             "Bulbizarre", "Herbizarre", "Florizarre",
             "Salamèche", "Reptincel", "Dracaufeu",
             "Carapuce", "Carabaffe", "Tortank",
@@ -100,16 +100,7 @@ public class Utils {
     public static String getRandomNom()
     {
         int i = random.nextInt(m_listePokemon.size());
-        return m_listePokemon.remove(i).toString();
-    }
-
-    /**
-     * Sert au debuggage
-     * @return La taille du tableau des noms des pokemon.
-     */
-    public static int taille()
-    {
-        return m_listePokemon.size();
+        return m_listePokemon.remove(i);
     }
 
     /**

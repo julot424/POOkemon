@@ -6,16 +6,11 @@ import java.util.ArrayList;
 
 public class Main
 {
-    private ArrayList<Pokemon> m_main;
+    private final ArrayList<Pokemon> m_main;
 
     public Main()
     {
         this.m_main = new ArrayList<>();
-    }
-
-    public ArrayList<Pokemon> getPokemonMain()
-    {
-        return  this.m_main;
     }
 
     public void ajouterPokemon(Pokemon pokemon)
@@ -33,13 +28,13 @@ public class Main
 
     public String afficheMain()
     {
-        String resultat = "";
+        StringBuilder result = new StringBuilder();
 
         for(int i = 0; i<this.m_main.size(); i++)
         {
-            resultat += i+1 + ") " + this.m_main.get(i).getNom() + ", Type " + this.m_main.get(i).getType().toString() + ", Vie: " + this.m_main.get(i).getPV() + ", attaque: " + this.m_main.get(i).getAtk() + "\n";
+            result.append(i + 1).append(") ").append(this.m_main.get(i).getNom()).append(", Type ").append(this.m_main.get(i).getType().toString()).append(", Vie: ").append(this.m_main.get(i).getPV()).append(", attaque: ").append(this.m_main.get(i).getAtk()).append("\n");
         }
-        return resultat;
+        return result.toString();
     }
 
     public Pokemon delFromMain(int i)
