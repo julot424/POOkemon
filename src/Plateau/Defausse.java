@@ -13,4 +13,9 @@ public class Defausse
     {
         this.m_defausse = new ArrayList<>();
     }
+
+    public void addToDefausse(Pokemon pokemon)
+    {
+        this.m_defausse.add(pokemon);
+    }
 }

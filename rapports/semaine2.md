@@ -23,3 +23,4 @@ Pour le prochain rendu, nous prévoyons de :
 
 - finir la gestion des tours/ que le jeu marche dans son entièreté
 - commencer à s'attaquer à l'affichage 
+ 

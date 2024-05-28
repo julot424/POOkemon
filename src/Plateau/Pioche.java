@@ -24,11 +24,10 @@ public class Pioche
 
     public Pokemon piocher()
     {
-        if(this.m_pioche.size() != 0)
+        if(!this.m_pioche.isEmpty())
         {
-            return this.m_pioche.remove(0);
+            return this.m_pioche.removeFirst();
         }
-
         return null;
     }
 

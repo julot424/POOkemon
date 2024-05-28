@@ -30,4 +30,20 @@ public class Main
     {
         return this.m_main;
     }
+
+    public String afficheMain()
+    {
+        String resultat = "";
+
+        for(int i = 0; i<this.m_main.size(); i++)
+        {
+            resultat += i+1 + ") " + this.m_main.get(i).getNom() + ", Type " + this.m_main.get(i).getType().toString() + ", Vie: " + this.m_main.get(i).getPV() + ", attaque: " + this.m_main.get(i).getAtk() + "\n";
+        }
+        return resultat;
+    }
+
+    public Pokemon delFromMain(int i)
+    {
+        return this.m_main.remove(i);
+    }
 }
