@@ -5,7 +5,7 @@ import Plateau.Main;
 import Plateau.Pioche;
 import Plateau.Terrain;
 
-import javax.rmi.ssl.SslRMIClientSocketFactory;
+import java.util.ArrayList;
 
 public class Bot extends Joueur
 {
@@ -41,7 +41,7 @@ public class Bot extends Joueur
     {
         if(!this.m_main.getMain().isEmpty())
         {
-            this.m_terrain.getTerrain().add(this.m_main.getMain().removeFirst());
+            this.m_terrain.addToTerrain(this.m_main.delFromMain(0));
         }
     }
 
@@ -79,16 +79,73 @@ public class Bot extends Joueur
         return this.m_pioche.getPioche().size();
     }
 
-    public void naration()
+    public void narration()
     {
         System.out.println("Au tour de l'adversaire !\n");
     }
 
     public void attaquer(Joueur cible)
     {
+        System.out.println("---------------------------------------------------------------AU TOUR DE L'ADVERSAIRE----------------------------------------------------------------");
+        Pokemon target;
+
         for(int i = 0; i < this.m_terrain.getTailleTerrain(); i++)
         {
-            this.m_terrain.getTerrain().get(i).attaquer(cible.getTerrain().get(cible.getAvantage(this.m_terrain.getTerrain().get(i), cible)));
+            target = cible.getTerrain().get(cible.getAvantage(this.m_terrain.getTerrain().get(i), cible));
+            this.m_terrain.getTerrain().get(i).attaquer(target);
+
+            cible.estMort(target);
+
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        System.out.println("\n");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void afficheTerrain()
+    {
+        this.m_terrain.afficheTerrain();
+    }
+
+    public ArrayList<Pokemon> getTerrain()
+    {
+        return this.m_terrain.getTerrain();
+    }
+
+    public void estMort(Pokemon cible)
+    {
+        if(cible.getPV() <= 0)
+        {
+            this.m_defausse.addToDefausse(cible);
+            this.m_terrain.delFromTerrain(cible);
+            System.out.println(cible.getNom() +  " est mort !\n");
+        }
+
+        else
+        {
+            System.out.println(cible.getNom() + " a désormais " + cible.getPV() + "PV !\n");
+        }
+    }
+
+    public void selectNewPokemon()
+    {
+        if(this.getTerrain().size() < 3)
+        {
+            for(int i = this.m_terrain.getTerrain().size(); i < 3; i++)
+            {
+                addToTerrainFromMain();
+            }
+
+
         }
     }
 }

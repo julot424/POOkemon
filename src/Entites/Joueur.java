@@ -47,11 +47,13 @@ public class Joueur {
         if(this.getTailleMain() < 5)
         {
             int i = 0;
-            for( i = this.getTailleMain(); i < 5 ; i++ )
+            int y = 0;
+            for(i = this.getTailleMain(); i < 5; i++ )
             {
                 piocher();
+                y++;
             }
-            System.out.println("Vous piochez " + i + " fois pour remplir votre main !\n");
+            System.out.println("Vous piochez " + y + " fois pour remplir votre main !\n");
         }
     }
 
@@ -65,11 +67,6 @@ public class Joueur {
         return this.m_main.getMain().size();
     }
 
-    /*public ArrayList<Pokemon> getMain()
-    {
-        return this.m_main.getMain();
-    }*/
-
     public ArrayList<Pokemon> getTerrain()
     {
         return this.m_terrain.getTerrain();
@@ -80,29 +77,15 @@ public class Joueur {
     {
         String chx = "";
 
-        for(int i = 0; i < 3; i++ )
+        for(int i = 0; i < 3; i++)
         {
             chx ="Choisissez vos Pokemons de départ parmi : " + "\n\n" +this.m_main.afficheMain();
 
-            if(i == 0)
-            {
-                System.out.println(chx);
-            }
-
-            else if(i == 1)
-            {
-                System.out.println(chx);
-            }
-
-            else
-            {
-                System.out.println(chx);
-            }
+            System.out.println(chx);
 
             addToTerrainFromMain();
         }
 
-        System.out.println("Votre terrain est composer de : " + this.m_terrain.afficheTerrain() + "\n");
         this.remplirMain();
     }
 
@@ -126,7 +109,7 @@ public class Joueur {
             chx = scnr.nextInt();
         }
 
-        this.m_terrain.getTerrain().add(this.m_main.getMain().remove(chx - 1));
+        this.m_terrain.addToTerrain(this.m_main.delFromMain(chx - 1));
     }
 
     public void setupMain()
@@ -140,7 +123,7 @@ public class Joueur {
             }}
     }
 
-    public void naration()
+    public void narration()
     {
         System.out.println("A votre tour de jouer !\n");
     }
@@ -149,7 +132,44 @@ public class Joueur {
 
     public void attaquer(Joueur cible)
     {
+        System.out.println("----------------------------------------------------------------A VOTRE TOUR DE JOUER-----------------------------------------------------------------");
 
+        for(int i = 0; i < this.getTerrain().size(); i++)
+        {
+            System.out.println("Avec quel Pokémon souhaitez-vous attaquer ?");
+            this.m_terrain.afficheTerrain();
+            Pokemon attaquant = this.m_terrain.getPokemonFromTerrain(scnr.nextInt()-1);
+
+            System.out.println("\nQuel Pokémon souhaitez-vous attaquer ?");
+            cible.afficheTerrain();
+            int indexTarget = scnr.nextInt();
+            Pokemon target = cible.getTerrain().get(indexTarget-1);
+
+            attaquant.attaquer(target);
+            cible.estMort(target);
+
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+    }
+
+    public void estMort(Pokemon cible)
+    {
+        if(cible.getPV() <= 0)
+        {
+            this.m_defausse.addToDefausse(cible);
+            this.m_terrain.delFromTerrain(cible);
+            System.out.println("Votre " + cible.getNom() +  " est mort !\n\n");
+        }
+
+        else
+        {
+            System.out.println("Votre " + cible.getNom() + " a désormais " + cible.getPV() + "PV !\n\n");
+        }
     }
 
     protected int getAvantage(Pokemon attaquant, Joueur cible)
@@ -179,5 +199,37 @@ public class Joueur {
         return 0;
 
     }
+
+    public ArrayList<Pokemon> getPioche()
+    {
+        return this.m_pioche.getPioche();
+    }
+
+    public ArrayList<Pokemon> getMain()
+    {
+        return this.m_main.getMain();
+    }
+
+    public void afficheTerrain()
+    {
+        this.m_terrain.afficheTerrain();
+    }
+
+    public void selectNewPokemon()
+    {
+        if(this.getTerrain().size() < 3)
+        {
+            for(int i = this.m_terrain.getTerrain().size(); i < 3; i++)
+            {
+                System.out.println("Choisissez un pokemon de votre main pour remplir votre terrain !\n");
+                System.out.println(this.m_main.afficheMain());
+                addToTerrainFromMain();
+            }
+
+
+        }
+    }
+
+
 }
 

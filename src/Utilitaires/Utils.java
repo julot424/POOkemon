@@ -8,7 +8,7 @@ public class Utils {
 
 
     //ArrayList couleurs = new ArrayList<(Arrays.asList(Rouge, Bleu, Vert));
-    private static ArrayList m_listePokemon = new ArrayList(Arrays.asList(
+    private static ArrayList<String> m_listePokemon = new ArrayList<String>(Arrays.asList(
             "Bulbizarre", "Herbizarre", "Florizarre",
             "Salamèche", "Reptincel", "Dracaufeu",
             "Carapuce", "Carabaffe", "Tortank",

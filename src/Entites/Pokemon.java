@@ -2,10 +2,10 @@ package Entites;
 
 public class Pokemon
 {
-    protected String m_nom;
-    protected int m_PV;
-    protected int m_atk;
-    protected Type m_type;
+    private String m_nom;
+    private int m_PV;
+    private int m_atk;
+    private Type m_type;
 
     public Pokemon(String nom, int PV, int atk, Type type)
     {
@@ -59,7 +59,4 @@ public class Pokemon
     {
         return this.m_type;
     }
-
-
-
 }

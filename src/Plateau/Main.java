@@ -41,4 +41,9 @@ public class Main
         }
         return resultat;
     }
+
+    public Pokemon delFromMain(int i)
+    {
+        return this.m_main.remove(i);
+    }
 }
