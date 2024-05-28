@@ -53,7 +53,7 @@ public class Joueur {
                 piocher();
                 y++;
             }
-            System.out.println("Vous piochez " + y + " fois pour remplir votre main !\n");
+            System.out.println("Vous piochez " + y + " fois pour remplir votre main !");
         }
     }
 
@@ -89,9 +89,18 @@ public class Joueur {
         this.remplirMain();
     }
 
-    private boolean estJuste(int nbr)
+    private boolean estJusteMain(int nbr)
     {
         if(nbr <= 0  || nbr > this.m_main.getMain().size())
+        {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean estJusteTerrain(int nbr)
+    {
+        if(nbr <= 0  || nbr > this.getTerrain().size())
         {
             return false;
         }
@@ -103,7 +112,7 @@ public class Joueur {
         int chx = -1;
         chx = scnr.nextInt();
 
-        while (!estJuste(chx))
+        while (!estJusteMain(chx))
         {
             System.out.println("Veuillez entrez un chiffre compris entre 1 et " + this.m_main.getMain().size() + " !");
             chx = scnr.nextInt();
@@ -125,24 +134,36 @@ public class Joueur {
 
     public void narration()
     {
-        System.out.println("A votre tour de jouer !\n");
+        System.out.println("----------------------------------------------------------------A VOTRE TOUR DE JOUER-----------------------------------------------------------------");
+
     }
 
 
 
     public void attaquer(Joueur cible)
     {
-        System.out.println("----------------------------------------------------------------A VOTRE TOUR DE JOUER-----------------------------------------------------------------");
+        int indexAtk;
 
         for(int i = 0; i < this.getTerrain().size(); i++)
         {
             System.out.println("Avec quel Pokémon souhaitez-vous attaquer ?");
             this.m_terrain.afficheTerrain();
-            Pokemon attaquant = this.m_terrain.getPokemonFromTerrain(scnr.nextInt()-1);
+            indexAtk = scnr.nextInt();
+            while(!estJusteTerrain(indexAtk))
+            {
+                System.out.println("Veuillez entrez un chiffre compris entre 1 et " + this.m_terrain.getTerrain().size() + " !");
+                indexAtk = scnr.nextInt();
+            }
+            Pokemon attaquant = this.m_terrain.getPokemonFromTerrain(indexAtk-1);
 
             System.out.println("\nQuel Pokémon souhaitez-vous attaquer ?");
             cible.afficheTerrain();
             int indexTarget = scnr.nextInt();
+            while (!cible.estJusteTerrain(indexTarget))
+            {
+                System.out.println("Veuillez entrez un chiffre compris entre 1 et " + cible.getTerrain().size() + " !");
+                indexTarget = scnr.nextInt();
+            }
             Pokemon target = cible.getTerrain().get(indexTarget-1);
 
             attaquant.attaquer(target);
@@ -231,5 +252,32 @@ public class Joueur {
     }
 
 
+    public void finJeu()
+    {
+        if(this.getTerrain().isEmpty() && this.getMain().isEmpty() && this.getPioche().isEmpty())
+        {
+            System.out.println("----------GAME OVER !----------");
+        }
+    }
+
+    public void taillePioche()
+    {
+        System.out.println("Cartes restantes dans votre pioche : " + this.getPioche().size());
+    }
+
+    public void tailleDefausse()
+    {
+        System.out.println("Nombres de carte dans votre défausse : " + this.getDefausse().size());
+    }
+
+    public ArrayList<Pokemon> getDefausse()
+    {
+        return this.m_defausse.getDefausse();
+    }
+
+    public void tailleMain()
+    {
+        System.out.println("Nombre de cartes en main : " + this.getMain().size());
+    }
 }
 

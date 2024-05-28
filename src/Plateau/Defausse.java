@@ -18,4 +18,9 @@ public class Defausse
     {
         this.m_defausse.add(pokemon);
     }
+
+    public ArrayList<Pokemon> getDefausse()
+    {
+        return this.m_defausse;
+    }
 }

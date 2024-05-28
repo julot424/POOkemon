@@ -22,7 +22,7 @@ public class Jeu {
         System.out.println("PPPP        OOOO  OOOO   KKK  KKK   EEEE       MMMM     MMMM  OOOO  OOOO   NNNN   NNNNNN");
         System.out.println("PPPP         OOOOOOOO    KKK   KKK  EEEEEEEE   MMMM     MMMM   OOOOOOOO    NNNN    NNNNN\n");
 
-        /*try {
+        try {
             // Boucle pour ajouter des points avec un intervalle de 1 seconde
             for (int i = 0; i <= 3; i++) {
                 // Afficher le texte avec les points ajoutés
@@ -38,7 +38,7 @@ public class Jeu {
             System.out.println("\nChargement terminé !\n");
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } */
+        }
 
 
         if(Utils.getRandomFirstPlayer() == 0)
@@ -145,19 +145,33 @@ public class Jeu {
         {
             int i = 1;
             //j1 = joue en 1er et j2 joue en 2ᵉ
-            while((!j1.getTerrain().isEmpty() && !j1.getMain().isEmpty() && !j1.getPioche().isEmpty()) || (!j2.getTerrain().isEmpty() && !j2.getMain().isEmpty() && !j2.getPioche().isEmpty()))
+            while((!j1.getTerrain().isEmpty() || !j1.getMain().isEmpty() || !j1.getPioche().isEmpty()) && (!j2.getTerrain().isEmpty() || !j2.getMain().isEmpty() || !j2.getPioche().isEmpty()))
             {
                 System.out.println("------------------------------------------------------------------------TOUR " + i + "------------------------------------------------------------------------");
+                j1.taillePioche();
+                j1.tailleDefausse();
+                j1.tailleMain();
+                System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------");
+                j2.taillePioche();
+                j2.tailleDefausse();
+                j2.tailleMain();
+
+                j1.narration();
                 j1.remplirMain();//On pioche une ou des cartes si la main n'est pas complète
-                j2.remplirMain();
                 j1.selectNewPokemon(); //On remplie le terrain si un pokemon est mort
-                j2.selectNewPokemon();
                 j1.attaquer(j2);//phase d'attaque
+
+                j2.narration();
+                j2.remplirMain();
+                j2.selectNewPokemon();
                 j2.attaquer(j1);
+
                 System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                 i++;
             }
-        System.out.println("FIN DU JEU");
+            j1.finJeu();
+            j2.finJeu();
+            System.out.println("FIN DU JEU");
     }
 
 

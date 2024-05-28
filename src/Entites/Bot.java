@@ -81,12 +81,12 @@ public class Bot extends Joueur
 
     public void narration()
     {
-        System.out.println("Au tour de l'adversaire !\n");
+        System.out.println("---------------------------------------------------------------AU TOUR DE L'ADVERSAIRE----------------------------------------------------------------");
+
     }
 
     public void attaquer(Joueur cible)
     {
-        System.out.println("---------------------------------------------------------------AU TOUR DE L'ADVERSAIRE----------------------------------------------------------------");
         Pokemon target;
 
         for(int i = 0; i < this.m_terrain.getTailleTerrain(); i++)
@@ -147,5 +147,43 @@ public class Bot extends Joueur
 
 
         }
+    }
+
+    public void finJeu()
+    {
+        if(this.getMain().isEmpty() && this.getTerrain().isEmpty() && this.getPioche().isEmpty())
+        {
+            System.out.println("----------VOUS AVEZ GAGNER !----------");
+        }
+    }
+
+    public void taillePioche()
+    {
+        System.out.println("Cartes restantes dans la pioche de l'adversaire : " + this.getPioche().size());
+    }
+
+    public void tailleDefausse()
+    {
+        System.out.println("Nombre de pokémon dans la défausse de l'adversaire: " + this.getDefausse().size());
+    }
+
+    public ArrayList<Pokemon> getDefausse()
+    {
+        return this.m_defausse.getDefausse();
+    }
+
+    public ArrayList<Pokemon> getPioche()
+    {
+        return this.m_pioche.getPioche();
+    }
+
+    public void tailleMain()
+    {
+        System.out.println("Nombre de carte dans la main de l'adversaire : " + this.getMain().size());
+    }
+
+    public ArrayList<Pokemon> getMain()
+    {
+        return this.m_main.getMain();
     }
 }
