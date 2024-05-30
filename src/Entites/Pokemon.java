@@ -4,15 +4,17 @@ public class Pokemon
 {
     private final String m_nom;
     private int m_PV;
-    private final int m_atk;
+    private int m_atk;
     private final Type m_type;
+    private final Pouvoir m_pouvoir;
 
-    public Pokemon(String nom, int PV, int atk, Type type)
+    public Pokemon(String nom, int PV, int atk, Type type, Pouvoir pouvoir)
     {
         this.m_nom = nom;
         this.m_atk = atk;
         this.m_PV = PV;
         this.m_type = type;
+        this.m_pouvoir = pouvoir;
     }
 
     public boolean attaquer(Pokemon cible)
@@ -59,4 +61,5 @@ public class Pokemon
     {
         return this.m_type;
     }
+
 }
