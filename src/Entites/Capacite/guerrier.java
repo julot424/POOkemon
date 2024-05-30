@@ -13,6 +13,6 @@ public class guerrier implements Pouvoir {
 
     @Override
     public void AppliquerPouvoir(Pokemon cible) {
-        
+
     }
 }
