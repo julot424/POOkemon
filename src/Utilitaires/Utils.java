@@ -1,8 +1,12 @@
 package Utilitaires;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+
+import Entites.Capacite.*;
+import Entites.Pouvoir;
 import Entites.Type;
 public class Utils {
 
@@ -61,7 +65,18 @@ public class Utils {
             "Draco", "Dracolosse", "Mewtwo",
             "Mew"));
 
+    public static ArrayList<Pouvoir> listPouvoirs = new ArrayList<>(Arrays.asList(new Berserk(), new Ether(), new guerrier(), new Kamikaze(), new Plomb(), new SoinTotal(), new SoinZone(), new Resistance()));
+
     private static final Random random = new Random();
+
+    public static Pouvoir getRandomPouvoir()
+    {
+        if(random.nextInt(41) < 8)
+        {
+            return  listPouvoirs.remove(random.nextInt(listPouvoirs.size()));
+        }
+        return null;
+    }
 
     /**
      *

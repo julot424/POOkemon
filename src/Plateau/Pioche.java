@@ -14,7 +14,7 @@ public class Pioche
 
     public void initPioche()
     {
-        this.m_pioche.add(new Pokemon(Utils.getRandomNom(), Utils.getRandomPV(), Utils.getRandomATK(), Utils.getRandomType()));
+        this.m_pioche.add(new Pokemon(Utils.getRandomNom(), Utils.getRandomPV(), Utils.getRandomATK(), Utils.getRandomType(), Utils.getRandomPouvoir()));
     }
 
     public ArrayList<Pokemon> getPioche()
