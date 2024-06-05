@@ -199,7 +199,7 @@ public class Joueur {
 
         for(int i = 0; i < cible.getTerrain().size(); i++)
         {
-            if((attaquant.getType() == Type.EAU && cible.getTerrain().get(i).getType() == Type.FEU) || (attaquant.getType() == Type.AIR && cible.getTerrain().get(i).getType() == Type.TERRE) || (attaquant.getType() == Type.TERRE && cible.getTerrain().get(i).getType() == Type.EAU) || (attaquant.getType() == Type.FEU && cible.getTerrain().get(i).getType() == Type.AIR))
+            if((attaquant.getType() == Type.ETHER) || (cible.getTerrain().get(i).getType() == Type.PLOMB) || (attaquant.getType() == Type.EAU && cible.getTerrain().get(i).getType() == Type.FEU) || (attaquant.getType() == Type.AIR && cible.getTerrain().get(i).getType() == Type.TERRE) || (attaquant.getType() == Type.TERRE && cible.getTerrain().get(i).getType() == Type.EAU) || (attaquant.getType() == Type.FEU && cible.getTerrain().get(i).getType() == Type.AIR))
             {
                 listAvantage.add(true);
             }
@@ -255,6 +255,71 @@ public class Joueur {
                 }
             }
         }
+    }
+
+    public void jouerPouvoir(Joueur cible)
+    {
+        for(int i = 0; i < this.getTerrain().size(); i++)
+        {
+            if(this.m_terrain.getTerrain().get(i).getPouvoir() != null)
+            {
+                System.out.println("Souhaitez-vous utiliser le pouvoir de " + this.m_terrain.getTerrain().get(i).getNom() + " ? (y/n)\n Ou obtenir les informations de son pouvoir ? (h)");
+                String rep = scnr.nextLine();
+                while(!(rep.equals("y") || rep.equals("n")))
+                {
+                    if(rep.equals("h"))
+                    {
+                        this.m_terrain.getTerrain().get(i).getPouvoir().afficheDescription();
+                        System.out.println("Entrez 'y' ou 'n' pour utiliser ou non le pouvoir de " + this.m_terrain.getTerrain().get(i).getNom());
+                    }
+
+                    else
+                    {
+                        System.out.println("Entrez 'y', 'n' ou 'h' !");
+                        rep = scnr.nextLine();
+                    }
+                }
+
+                if(rep.equals("y"))
+                {
+                    System.out.println("Votre terrain");
+                    this.afficheTerrain();
+                    System.out.println("Choisissez sur lequel de vos Pokémon appliquer le pouvoir \nPour choisir une Pokémon du terrain adverse, entrez '5'");
+                    int chxPokemon = scnr.nextInt() -1;
+
+
+                    while(!estJusteTerrain(chxPokemon) || chxPokemon != 4)
+                    {
+                        System.out.println("Choisissez un chiffre entre 1 et " + this.getTerrain().size() + "\n ou tapez '5' pour l'utiliser sur le terrain adverse");
+                    }
+
+                    if(estJusteTerrain(chxPokemon))
+                    {
+                        this.m_terrain.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.m_terrain.getTerrain().get(i), cible.getTerrain().get(chxPokemon));
+                    }
+
+                    else {
+                        System.out.println("terrain adverse");
+                        cible.afficheTerrain();
+
+                        System.out.println("Choisissez le Pokémon adverse");
+                        chxPokemon = scnr.nextInt();
+                        while (!cible.estJusteTerrain(chxPokemon))
+                        {
+                            System.out.println("Choisissez un chiffre entre 1 et " + this.getTerrain().size());
+                            chxPokemon = scnr.nextInt();
+                        }
+
+                        this.m_terrain.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.m_terrain.getTerrain().get(i), cible.getTerrain().get(chxPokemon));
+                    }
+
+                }
+
+
+            }
+        }
+
+
     }
 
 

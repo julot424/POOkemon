@@ -6,13 +6,40 @@ import Entites.Pouvoir;
 public class guerrier implements Pouvoir {
 
     private final String m_nom;
+    private boolean m_utilise;
 
-    public guerrier() {
+    public guerrier()
+    {
         this.m_nom = "Férveur Guerrière";
+        this.m_utilise = false;
+    }
+
+
+
+    @Override
+    public void AppliquerPouvoir(Pokemon attaquant, Pokemon cible)
+    {
+     if(!this.m_utilise)
+     {
+         cible.setATK(10);
+         System.out.println("L'attaque de " + cible.getNom() + " est désormais de " + cible.getAtk() + " !");
+         this.m_utilise = true;
+     }
+
+     else {
+         System.out.println("Le pouvoir a deja été utilisé !");
+     }
+
+
     }
 
     @Override
-    public void AppliquerPouvoir(Pokemon cible) {
+    public void afficheDescription() {
+        System.out.println("Les attaques du Pokémon choisi infligeront 10 de dégâts supplémentaire");
+    }
 
+    @Override
+    public String getNom() {
+        return this.m_nom;
     }
 }

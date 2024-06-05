@@ -182,4 +182,9 @@ public class Bot extends Joueur
     {
         return this.m_main.getMain();
     }
+
+    public void jouerPouvoir(Joueur cible)
+    {
+
+    }
 }

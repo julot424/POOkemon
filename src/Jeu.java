@@ -156,6 +156,9 @@ public class Jeu {
                 j2.tailleDefausse();
                 j2.tailleMain();
 
+                j1.jouerPouvoir(j2);
+                j2.jouerPouvoir(j1);
+
                 j1.narration();
                 j1.remplirMain();//On pioche une ou des cartes si la main n'est pas complète
                 j1.selectNewPokemon(); //On remplie le terrain si un pokemon est mort

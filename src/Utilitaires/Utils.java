@@ -71,11 +71,17 @@ public class Utils {
 
     public static Pouvoir getRandomPouvoir()
     {
-        if(random.nextInt(41) < 8)
+        Pouvoir pouvoir = null;
+
+        if (random.nextInt(41) < 8)
         {
-            return  listPouvoirs.remove(random.nextInt(listPouvoirs.size()));
+            if(!listPouvoirs.isEmpty())
+            {
+                return listPouvoirs.remove(random.nextInt(listPouvoirs.size()));
+            }
         }
-        return null;
+
+        return pouvoir;
     }
 
     /**
@@ -104,7 +110,7 @@ public class Utils {
     public static Type getRandomType()
     {
         Type[] types = Type.values();
-        int index = random.nextInt(types.length);
+        int index = random.nextInt(types.length-2);
         return types[index];
     }
 

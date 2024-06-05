@@ -56,6 +56,12 @@ public class Terrain
         System.out.println();
 
         for (Pokemon p : rowPokemons) {
+            String pouvoir = (p.getPouvoir() != null) ? p.getPouvoir().getNom() : "Moldu";
+            System.out.printf("| Pouvoir: %-11s |   ", pouvoir);
+        }
+        System.out.println();
+
+        for (Pokemon p : rowPokemons) {
             System.out.print("+----------------------+   ");
         }
         System.out.println();
