@@ -143,4 +143,24 @@ package Utilitaires
     }
 }
 
+
+Jeu --> "1" Bot
+Jeu --> "1" Joueur
+
+Bot --> "1" Pioche
+Bot --> "1" Main
+Bot --> "1" Defause
+Bot --> "1" Terrain
+
+Joueur --> "1" Pioche
+Joueur --> "1" Main
+Joueur --> "1" Defause
+Joueur --> "1" Terrain
+
+Pokemon --> "1" Type
+
+Defause --> "0..*" Pokemon
+Main --> "0..*" Pokemon
+Pioche --> "0..*" Pokemon
+Terrain --> "0..*" Pokemon
 @enduml

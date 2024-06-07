@@ -41,6 +41,11 @@ public class Ether implements Pouvoir {
         return this.m_nom;
     }
 
+    @Override
+    public boolean estKamikaze() {
+        return false;
+    }
+
     public String getM_nom() {
         return this.m_nom;
     }

@@ -29,4 +29,9 @@ public class Resistance implements Pouvoir
     public String getNom() {
         return this.m_nom;
     }
+
+    @Override
+    public boolean estKamikaze() {
+        return false;
+    }
 }

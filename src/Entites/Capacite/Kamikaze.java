@@ -15,16 +15,22 @@ public class Kamikaze implements Pouvoir {
 
     @Override
     public void AppliquerPouvoir(Pokemon attaquant, Pokemon cible) {
-
+        attaquant.exploser();
+        cible.exploser();
     }
 
     @Override
     public void afficheDescription() {
-        System.out.println("Choisissez un Pokémon allié et un ennemi, les deux Pokémon seront alors éliminé");
+        System.out.println("Le Pokémon possédant le pouvoir et le Pokémon ennemi choisi seront élimés ");
     }
 
     @Override
     public String getNom() {
         return this.m_nom;
+    }
+
+    @Override
+    public boolean estKamikaze() {
+        return true;
     }
 }

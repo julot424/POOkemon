@@ -9,7 +9,7 @@ public class SoinZone implements Pouvoir {
 
     public SoinZone()
     {
-        this.m_nom = "Soin de zone";
+        this.m_nom = "Soin zone";
     }
 
 
@@ -26,5 +26,10 @@ public class SoinZone implements Pouvoir {
     @Override
     public String getNom() {
         return this.m_nom;
+    }
+
+    @Override
+    public boolean estKamikaze() {
+        return false;
     }
 }

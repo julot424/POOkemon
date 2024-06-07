@@ -187,4 +187,9 @@ public class Bot extends Joueur
     {
 
     }
+
+    public void addToTerrain(Pokemon p)
+    {
+        this.m_terrain.addToTerrain(p);
+    }
 }

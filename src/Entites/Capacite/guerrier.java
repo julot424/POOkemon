@@ -19,17 +19,9 @@ public class guerrier implements Pouvoir {
     @Override
     public void AppliquerPouvoir(Pokemon attaquant, Pokemon cible)
     {
-     if(!this.m_utilise)
-     {
          cible.setATK(10);
          System.out.println("L'attaque de " + cible.getNom() + " est désormais de " + cible.getAtk() + " !");
          this.m_utilise = true;
-     }
-
-     else {
-         System.out.println("Le pouvoir a deja été utilisé !");
-     }
-
 
     }
 
@@ -41,5 +33,10 @@ public class guerrier implements Pouvoir {
     @Override
     public String getNom() {
         return this.m_nom;
+    }
+
+    @Override
+    public boolean estKamikaze() {
+        return false;
     }
 }

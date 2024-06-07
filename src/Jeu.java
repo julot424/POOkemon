@@ -1,6 +1,8 @@
 import Entites.Bot;
 import Entites.Joueur;
 import Utilitaires.Utils;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -156,17 +158,19 @@ public class Jeu {
                 j2.tailleDefausse();
                 j2.tailleMain();
 
-                j1.jouerPouvoir(j2);
-                j2.jouerPouvoir(j1);
+
+
 
                 j1.narration();
                 j1.remplirMain();//On pioche une ou des cartes si la main n'est pas complète
                 j1.selectNewPokemon(); //On remplie le terrain si un pokemon est mort
+                j1.jouerPouvoir(j2); //phase pouvoir
                 j1.attaquer(j2);//phase d'attaque
 
                 j2.narration();
                 j2.remplirMain();
                 j2.selectNewPokemon();
+                j2.jouerPouvoir(j1);
                 j2.attaquer(j1);
 
                 System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");

@@ -1,5 +1,6 @@
 package Entites;
 
+import Entites.Capacite.Kamikaze;
 import Plateau.Defausse;
 import Plateau.Main;
 import Plateau.Pioche;
@@ -271,6 +272,7 @@ public class Joueur {
                     {
                         this.m_terrain.getTerrain().get(i).getPouvoir().afficheDescription();
                         System.out.println("Entrez 'y' ou 'n' pour utiliser ou non le pouvoir de " + this.m_terrain.getTerrain().get(i).getNom());
+                        rep = scnr.nextLine();
                     }
 
                     else
@@ -285,17 +287,38 @@ public class Joueur {
                     System.out.println("Votre terrain");
                     this.afficheTerrain();
                     System.out.println("Choisissez sur lequel de vos Pokémon appliquer le pouvoir \nPour choisir une Pokémon du terrain adverse, entrez '5'");
-                    int chxPokemon = scnr.nextInt() -1;
+                    int chxPokemon;
 
+                    while (true) {
+                        chxPokemon = scnr.nextInt();
 
-                    while(!estJusteTerrain(chxPokemon) || chxPokemon != 4)
-                    {
-                        System.out.println("Choisissez un chiffre entre 1 et " + this.getTerrain().size() + "\n ou tapez '5' pour l'utiliser sur le terrain adverse");
+                        if (chxPokemon == 5 || (chxPokemon >= 1 && chxPokemon <= this.getTerrain().size())) {
+                            break;
+                        } else {
+                            System.out.println("Choisissez un chiffre entre 1 et " + this.getTerrain().size() + "\nou tapez '5' pour l'utiliser sur le terrain adverse");
+                        }
                     }
 
-                    if(estJusteTerrain(chxPokemon))
+                    chxPokemon--;
+
+                    if(chxPokemon < this.getTerrain().size())
                     {
-                        this.m_terrain.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.m_terrain.getTerrain().get(i), cible.getTerrain().get(chxPokemon));
+                        if(this.m_terrain.getTerrain().get(i).getPouvoir().estKamikaze())
+                        {
+                            System.out.println("\nQuel Pokémon exploser ?");
+                            cible.afficheTerrain();
+
+                            int chx = scnr.nextInt() -1;
+                            this.m_terrain.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.m_terrain.getTerrain().get(i), cible.getTerrain().get(chx));
+                            this.estMort(this.m_terrain.getTerrain().get(i));
+                            cible.estMort(cible.getTerrain().get(chx));
+                        }
+
+                        else
+                        {
+                            this.m_terrain.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.m_terrain.getTerrain().get(i), this.getTerrain().get(chxPokemon));
+                        }
+
                     }
 
                     else {
@@ -310,6 +333,7 @@ public class Joueur {
                             chxPokemon = scnr.nextInt();
                         }
 
+                        chxPokemon--;
                         this.m_terrain.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.m_terrain.getTerrain().get(i), cible.getTerrain().get(chxPokemon));
                     }
 
@@ -351,5 +375,11 @@ public class Joueur {
     {
         System.out.println("Nombre de cartes en main : " + this.getMain().size());
     }
+
+    public void addToTerrain(Pokemon p)
+    {
+        this.m_terrain.addToTerrain(p);
+    }
+
 }
 
