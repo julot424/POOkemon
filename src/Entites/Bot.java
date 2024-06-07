@@ -192,4 +192,20 @@ public class Bot extends Joueur
     {
         this.m_terrain.addToTerrain(p);
     }
+
+    public void stopBerserk()
+    {
+        for(int i = 0; i < this.getTerrain().size(); i++)
+        {
+            if(this.getTerrain().get(i).getPouvoir() != null)
+            {
+                if(this.getTerrain().get(i).getPouvoir().estBerserk())
+                {
+                    this.getTerrain().get(i).setATK(-(this.getTerrain().get(i).getAtk()/2));
+                    System.out.println("L'effet Berserk du " + this.getTerrain().get(i).getNom() + " adverse s'est consumé !");
+                }
+
+            }
+        }
+    }
 }

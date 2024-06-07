@@ -39,4 +39,29 @@ public class guerrier implements Pouvoir {
     public boolean estKamikaze() {
         return false;
     }
+
+    @Override
+    public boolean estBerserk() {
+        return false;
+    }
+
+    @Override
+    public boolean estSoinZone() {
+        return false;
+    }
+
+    @Override
+    public boolean estUtilise() {
+        return this.m_utilise;
+    }
+
+    @Override
+    public boolean enUtilisation() {
+        return false;
+    }
+
+    @Override
+    public void stopBerserk() {
+
+    }
 }

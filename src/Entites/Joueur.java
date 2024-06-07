@@ -1,5 +1,6 @@
 package Entites;
 
+import Entites.Capacite.Berserk;
 import Entites.Capacite.Kamikaze;
 import Plateau.Defausse;
 import Plateau.Main;
@@ -262,9 +263,9 @@ public class Joueur {
     {
         for(int i = 0; i < this.getTerrain().size(); i++)
         {
-            if(this.m_terrain.getTerrain().get(i).getPouvoir() != null)
+            if(this.m_terrain.getTerrain().get(i).getPouvoir() != null && !this.getTerrain().get(i).getPouvoir().estUtilise())
             {
-                System.out.println("Souhaitez-vous utiliser le pouvoir de " + this.m_terrain.getTerrain().get(i).getNom() + " ? (y/n)\n Ou obtenir les informations de son pouvoir ? (h)");
+                System.out.println("Souhaitez-vous utiliser le pouvoir de " + this.m_terrain.getTerrain().get(i).getNom() + " ? (y/n)\nOu obtenir les informations de son pouvoir ? (h)\n");
                 String rep = scnr.nextLine();
                 while(!(rep.equals("y") || rep.equals("n")))
                 {
@@ -273,6 +274,7 @@ public class Joueur {
                         this.m_terrain.getTerrain().get(i).getPouvoir().afficheDescription();
                         System.out.println("Entrez 'y' ou 'n' pour utiliser ou non le pouvoir de " + this.m_terrain.getTerrain().get(i).getNom());
                         rep = scnr.nextLine();
+
                     }
 
                     else
@@ -282,7 +284,7 @@ public class Joueur {
                     }
                 }
 
-                if(rep.equals("y"))
+                if(rep.equals("y") && !this.getTerrain().get(i).getPouvoir().estSoinZone())
                 {
                     System.out.println("Votre terrain");
                     this.afficheTerrain();
@@ -337,6 +339,12 @@ public class Joueur {
                         this.m_terrain.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.m_terrain.getTerrain().get(i), cible.getTerrain().get(chxPokemon));
                     }
 
+                } else if (rep.equals("y")&& this.getTerrain().get(i).getPouvoir().estSoinZone()) {
+
+                    for(int y = 0;y < this.getTerrain().size();y++)
+                    {
+                        this.m_terrain.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.m_terrain.getTerrain().get(i), this.getTerrain().get(y));
+                    }
                 }
 
 
@@ -381,5 +389,25 @@ public class Joueur {
         this.m_terrain.addToTerrain(p);
     }
 
+    public void stopBerserk()
+    {
+        for(int i = 0; i < this.getTerrain().size(); i++)
+        {
+            if(this.getTerrain().get(i).getPouvoir() != null)
+            {
+                if(this.getTerrain().get(i).getPouvoir().estBerserk())
+                {
+                    if(this.getTerrain().get(i).getPouvoir().enUtilisation())
+                    {
+                        this.getTerrain().get(i).getPouvoir().stopBerserk();
+                        this.getTerrain().get(i).setATK(-(this.getTerrain().get(i).getAtk()/2));
+                        System.out.println("L'effet Berserk de votre " + this.getTerrain().get(i).getNom() + " s'est consumé !\n");
+                    }
+
+                }
+            }
+
+        }
+    }
 }
 

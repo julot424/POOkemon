@@ -22,6 +22,7 @@ public class Plomb implements Pouvoir {
         {
             cible.setType(Type.PLOMB);
             System.out.println(cible.getNom() + " est désormais de type " + cible.getType());
+            this.m_utilise = true;
         }
 
         else
@@ -44,5 +45,30 @@ public class Plomb implements Pouvoir {
     @Override
     public boolean estKamikaze() {
         return false;
+    }
+
+    @Override
+    public boolean estBerserk() {
+        return false;
+    }
+
+    @Override
+    public boolean estSoinZone() {
+        return false;
+    }
+
+    @Override
+    public boolean estUtilise() {
+        return this.m_utilise;
+    }
+
+    @Override
+    public boolean enUtilisation() {
+        return false;
+    }
+
+    @Override
+    public void stopBerserk() {
+
     }
 }

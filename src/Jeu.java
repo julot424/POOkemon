@@ -153,10 +153,13 @@ public class Jeu {
                 j1.taillePioche();
                 j1.tailleDefausse();
                 j1.tailleMain();
+                j1.stopBerserk();
+
                 System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------");
                 j2.taillePioche();
                 j2.tailleDefausse();
                 j2.tailleMain();
+                j2.stopBerserk();
 
 
 

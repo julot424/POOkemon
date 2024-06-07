@@ -16,7 +16,7 @@ public class SoinTotal implements Pouvoir {
     @Override
     public void AppliquerPouvoir(Pokemon attaquant, Pokemon cible) {
         cible.setPV(cible.getPvMax());
-
+        this.m_utilise = true;
     }
 
     @Override
@@ -32,5 +32,30 @@ public class SoinTotal implements Pouvoir {
     @Override
     public boolean estKamikaze() {
         return false;
+    }
+
+    @Override
+    public boolean estBerserk() {
+        return false;
+    }
+
+    @Override
+    public boolean estSoinZone() {
+        return false;
+    }
+
+    @Override
+    public boolean estUtilise() {
+        return this.m_utilise;
+    }
+
+    @Override
+    public boolean enUtilisation() {
+        return false;
+    }
+
+    @Override
+    public void stopBerserk() {
+
     }
 }

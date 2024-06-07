@@ -12,6 +12,7 @@ public class Pokemon
     private Type m_type;
     private int m_PvMax;
     private final Pouvoir m_pouvoir;
+    private boolean m_resistant;
 
     public Pokemon(String nom, int PV, int atk, Type type, Pouvoir pouvoir)
     {
@@ -21,28 +22,65 @@ public class Pokemon
         this.m_PV = PV;
         this.m_type = type;
         this.m_pouvoir = pouvoir;
+        this.m_resistant = false;
     }
 
     public boolean attaquer(Pokemon cible)
     {
         if((this.getType() == Type.ETHER) || (cible.getType() == Type.PLOMB) || (this.getType() == Type.EAU && cible.getType() == Type.FEU) || (this.getType() == Type.AIR && cible.getType() == Type.TERRE) || (this.getType() == Type.TERRE && cible.getType() == Type.EAU) || (this.getType() == Type.FEU && cible.getType() == Type.AIR))
         {
-            cible.m_PV -= this.getAtk() + 10;
-            System.out.println(this.getNom() + " est en avantage de type, il inflige à " + cible.getNom() + " " + (this.m_atk + 10) + " dégâts");
+            if(cible.m_resistant)
+            {
+                cible.m_PV -= this.getAtk();
+                System.out.println(this.getNom() + " est en avantage de type, mais " + cible.getNom() +  " est résistant, il inflige donc " + this.getAtk() + " dégâts");
+            }
+
+            else
+            {
+                cible.m_PV -= this.getAtk() + 10;
+                System.out.println(this.getNom() + " est en avantage de type, il inflige à " + cible.getNom() + " " + (this.m_atk + 10) + " dégâts");
+            }
 
             return cible.m_PV <= 0;
         }
 
         else if((this.getType()==Type.PLOMB) || (cible.getType() == Type.ETHER) || (this.getType() == Type.FEU && cible.getType() == Type.EAU) || (this.getType() == Type.TERRE && cible.getType() == Type.AIR) || (this.getType() == Type.EAU && cible.getType() == Type.TERRE) || (this.getType() == Type.AIR && cible.getType() == Type.FEU))
         {
-            cible.m_PV -= this.getAtk() -10;
-            System.out.println(this.getNom() + " est en désavantage de type, il inflige à " + cible.getNom() + " " + (this.m_atk - 10) + " dégâts");
+            if(cible.m_resistant)
+            {
+                if(this.getAtk()-20 < 0)
+                {
+                    System.out.println(this.getNom() + " est en désavantage et " + cible.getNom() + " est résistant, il inflige donc 0 dégâts");
+
+                }
+                else
+                {
+                    cible.m_PV -= this.getAtk() -20;
+                    System.out.println(this.getNom() + " est en désavantage et " + cible.getNom() + " est résistant, il inflige donc " + (this.m_atk - 20) + " dégâts");
+                }
+            }
+
+            else
+            {
+                cible.m_PV -= this.getAtk() -10;
+                System.out.println(this.getNom() + " est en désavantage de type, il inflige à " + cible.getNom() + " " + (this.getAtk() - 10) + " dégâts");
+            }
 
             return cible.m_PV <= 0;
         }
 
-        cible.m_PV -= this.getAtk();
-        System.out.println(this.getNom() + " attaque " + cible.getNom() + " et lui inflige " + this.m_atk + " dégâts");
+        if(cible.m_resistant)
+        {
+            cible.m_PV -= this.getAtk()-10;
+            System.out.println(this.getNom() + " attaque " + cible.getNom() + " mais il est résistant, il inflige donc seulement " + (this.getAtk()-10) + " dégâts");
+        }
+
+        else
+        {
+            cible.m_PV -= this.getAtk();
+            System.out.println(this.getNom() + " attaque " + cible.getNom() + " et lui inflige " + this.m_atk + " dégâts");
+        }
+
 
         return cible.m_PV <= 0;
     }
@@ -80,7 +118,7 @@ public class Pokemon
 
     public int getPvMax() { return this.m_PvMax; }
 
-    public void setPV(int soin) { this.m_PV = soin; }
+    public void setPV(int soin) { this.m_PV += soin; }
 
     public void setATK(int i)
     {
@@ -90,5 +128,10 @@ public class Pokemon
     public Pouvoir getPouvoir()
     {
         return this.m_pouvoir;
+    }
+
+    public void setResistance(boolean b)
+    {
+        this.m_resistant = b;
     }
 }
