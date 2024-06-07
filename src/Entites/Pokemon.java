@@ -10,7 +10,7 @@ public class Pokemon
     private int m_PV;
     private int m_atk;
     private Type m_type;
-    private int m_PvMax;
+    private final int m_PvMax;
     private final Pouvoir m_pouvoir;
     private boolean m_resistant;
 

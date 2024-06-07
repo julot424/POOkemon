@@ -58,4 +58,24 @@ public class Kamikaze implements Pouvoir {
     public void stopBerserk() {
 
     }
+
+    @Override
+    public boolean estEther() {
+        return false;
+    }
+
+    @Override
+    public boolean estGuerrier() {
+        return false;
+    }
+
+    @Override
+    public boolean estResistance() {
+        return false;
+    }
+
+    @Override
+    public boolean estPlomb() {
+        return false;
+    }
 }

@@ -60,4 +60,24 @@ public class Resistance implements Pouvoir
     public void stopBerserk() {
 
     }
+
+    @Override
+    public boolean estEther() {
+        return false;
+    }
+
+    @Override
+    public boolean estGuerrier() {
+        return false;
+    }
+
+    @Override
+    public boolean estResistance() {
+        return true;
+    }
+
+    @Override
+    public boolean estPlomb() {
+        return false;
+    }
 }

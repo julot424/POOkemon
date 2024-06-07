@@ -34,6 +34,26 @@ public class Berserk implements Pouvoir
     }
 
     @Override
+    public boolean estEther() {
+        return false;
+    }
+
+    @Override
+    public boolean estGuerrier() {
+        return false;
+    }
+
+    @Override
+    public boolean estResistance() {
+        return false;
+    }
+
+    @Override
+    public boolean estPlomb() {
+        return false;
+    }
+
+    @Override
     public void afficheDescription() {
         System.out.println("Pour le tour en cours, le Pokémon choisi double son attaque");
     }

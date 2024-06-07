@@ -1,0 +1,347 @@
+@startuml
+scale 1
+skinparam classFontStyle Bold
+skinparam defaultFontSize 15
+hide empty members
+skinparam classAttribute IconSize 0
+skinparam classFontStyle Bold
+hide enum methods
+
+
+class jeu
+{
+    +main(String[] argrs)
+    +estPret() :Boolean
+    +jeuAIFirst()
+    +jeuUserFirst()
+    +startGame()
+}
+
+package Utilitaires
+{
+    class Utils
+    {
+        +getRandomPouvoir() :Pouvoir
+        +getRandomPV() :Integer
+        +getRandomATK() :Integer
+        +getRandomNom() :String
+        +getRandomFirstPlayer() :Integer
+    }
+}
+
+package Testes
+{
+    class BerserkTest
+    {
+        +main(String[] argrs)
+    }
+
+    class EtherTest
+    {
+        +main(String[] argrs)
+    }
+
+    class GuerrierTest
+    {
+        +main(String[] argrs)
+    }
+
+    class KamikazeTest
+    {
+        +main(String[] argrs)
+    }
+
+    class PlombTest
+    {
+        +main(String[] argrs)
+    }
+
+    class ResistanceTest
+    {
+        +main(String[] argrs)
+    }
+
+    class SoinTotalTest
+    {
+        +main(String[] argrs)
+    }
+
+    class SoinZoneTest
+    {
+        +main(String[] argrs)
+    }
+}
+
+package Plateau
+{
+    class Defausse
+    {
+        -m_defausse :Pokemon[*]
+        +<<Create>> Defausse()
+        +addToDefausse(pokemon :Pokemon)
+        +getDefausse() :Pokemon[*]
+    }
+
+    class Main
+    {
+        -m_main :Pokemon[*]
+        +<<Create>> Main()
+        +ajouterPokemon(pokemon :Pokemon)
+        +getMain() :Pokemon[*]
+        +afficheMain() :String
+        +delFromMain(i :Integer) :Pokemon
+    }
+
+    class Pioche
+    {
+        -m_pioche :Pokemon[*]
+        +<<Create>> Pioche()
+        +initPioche()
+        +getPioche() :Pokemon[*]
+        +piocher() :Pokemon
+    }
+
+    class Terrain
+    {
+        -m_terrain :Pokemon[*]
+        +afficheTerrain()
+        +printRow(pokemons :Pokemon[*], startIndex :Integer)
+        +getTerrain() :Pokemon[*]
+        +getTailleTerrain() :Integer
+        +delFromTerrain(pokemon :Pokemon)
+        +addToTerrain(pokemon :Pokemon)
+        getPokemonFromTerrain(i :Integer) :Pokemon
+    }
+}
+
+package Entites
+{
+    class Bot
+    {
+        +<<Create>> Bot()
+        +setupTerrain()
+        +addToTerrainFromMain()
+        +piocher()
+        +remplirMain()
+        +addPokemonToPioche()
+        +getTailleMain()
+        +narration()
+        +attaquer(cible :Joueur)
+        +afficheTerrain()
+        +getTerrain() :Pokemon[*]
+        +estMort(cible :Pokemon)
+        +selectNewPokemon()
+        +finJeu(cible :Joueur)
+        +taillePioche()
+        +tailleDefausse()
+        +getDefausse() :Pokemon[*]
+        +gePioche() :Pokemon[*]
+        +tailleMain()
+        +getMain() :Pokemon[*]
+        +jouerPouvoir(cible :Joueur)
+        +addToTerrain(p :Pokemon)
+        +stopBerserk()
+    }
+
+    class Joueur
+    {
+        +<<Create>>Joueur()
+        +addPokemonToPioche()
+        +remplirMain()
+        +piocher()
+        +getTailleMain() :Integer
+        +getTerrain :Pokemon[*]
+        +setupTerrain()
+        -estJusteMain(nbr :Integer) :Boolean
+        -estJusteTerrain(nbr :Integer) :Boolean
+        +addToTerrainFromMain()
+        +setupMain()
+        +narration()
+        +attaquer(cible :Joueur)
+        +estMort(cible :Pokemon)
+        +getAvantage() :Integer
+        +getPioche() :Pokemon[*]
+        +getMain() :Pokemon[*]
+        +afficheTerrain()
+        +selectNewPokemon()
+        +jouerPouvoir(cible :Joueur)
+        +finJeu(cible :Joueur)
+        +taillePioche()
+        +tailleDefausse()
+        +getDefausse() :Pokemon[*]
+        +tailleMain()
+        +addToTerrain()
+        +stopBerserk()
+    }
+
+    class Pokemon
+    {
+        -m_nom :String
+        -m_PV :Integer
+        -m_ATK :Integer
+        -m_PVMax :Integer
+        -m_resistant :Boolean
+        +<<Create>> Pokemon(nom ;String, PV :Integer, atk :Integer, type :Type, pouvoir Pouvoir)
+        +attaquer(cible :Pokemon) :Boolean
+        +exploser()
+        +getNom :String
+        +getATK() :Integer
+        +getPV() :Integer
+        +getType() :Type
+        +setType(type :Type)
+        +getPVMax() :Integer
+        +setPV(soin :Integer)
+        +setATK(i :Integer)
+        +getPouvoir() :Pouvoir
+        +setResistance(b :Boolean)
+    }
+
+    interface Pouvoir
+    {
+        +AppliquerPouvoir(attaquant :Pokemon, cible :Pokemon)
+        +afficherDescription()
+        +getNom() :String
+        +estKamikaze() :Boolean
+        +estBerserk() :Boolean
+        +estSoinZone() :Boolean
+        +estUtilise() :Boolean
+        +enUtilisation() :Boolean
+        +stopBerserk()
+    }
+
+    package Capacite
+    {
+        class Berserk
+        {
+            -m_nom :String
+            -m_utilise :Boolean
+            -m_enCours :Boolean
+            +<<Create>>Berserk()
+            +AppliquerPouvoir(attaquant :Pokemon, cible :Pokemon)
+            +afficherDescription()
+            +getNom() :String
+            +estKamikaze() :Boolean
+            +estBerserk() :Boolean
+            +estSoinZone() :Boolean
+            +estUtilise() :Boolean
+            +enUtilisation() :Boolean
+            +stopBerserk()
+        }
+
+        class Ether
+        {
+            -m_nom :String
+            -m_utilise :Boolean
+            +<<Create>>Berserk()
+            +AppliquerPouvoir(attaquant :Pokemon, cible :Pokemon)
+            +afficherDescription()
+            +getNom() :String
+            +estKamikaze() :Boolean
+            +estBerserk() :Boolean
+            +estSoinZone() :Boolean
+            +estUtilise() :Boolean
+            +enUtilisation() :Boolean
+            +stopBerserk()
+        }
+
+        class Guerrier
+        {
+            -m_nom :String
+            -m_utilise :Boolean
+            +<<Create>>Berserk()
+            +AppliquerPouvoir(attaquant :Pokemon, cible :Pokemon)
+            +afficherDescription()
+            +getNom() :String
+            +estKamikaze() :Boolean
+            +estBerserk() :Boolean
+            +estSoinZone() :Boolean
+            +estUtilise() :Boolean
+            +enUtilisation() :Boolean
+            +stopBerserk()
+        }
+
+        class Kamikaze
+        {
+            -m_nom :String
+            -m_utilise :Boolean
+            +<<Create>>Berserk()
+            +AppliquerPouvoir(attaquant :Pokemon, cible :Pokemon)
+            +afficherDescription()
+            +getNom() :String
+            +estKamikaze() :Boolean
+            +estBerserk() :Boolean
+            +estSoinZone() :Boolean
+            +estUtilise() :Boolean
+            +enUtilisation() :Boolean
+            +stopBerserk()
+        }
+
+        class Plomb
+        {
+            -m_nom :String
+            -m_utilise :Boolean
+            +<<Create>>Berserk()
+            +AppliquerPouvoir(attaquant :Pokemon, cible :Pokemon)
+            +afficherDescription()
+            +getNom() :String
+            +estKamikaze() :Boolean
+            +estBerserk() :Boolean
+            +estSoinZone() :Boolean
+            +estUtilise() :Boolean
+            +enUtilisation() :Boolean
+            +stopBerserk()
+        }
+
+        class Resistance
+        {
+            -m_nom :String
+            -m_utilise :Boolean
+            +<<Create>>Berserk()
+            +AppliquerPouvoir(attaquant :Pokemon, cible :Pokemon)
+            +afficherDescription()
+            +getNom() :String
+            +estKamikaze() :Boolean
+            +estBerserk() :Boolean
+            +estSoinZone() :Boolean
+            +estUtilise() :Boolean
+            +enUtilisation() :Boolean
+            +stopBerserk()
+        }
+
+        class SoinTotal
+        {
+            -m_nom :String
+            -m_utilise :Boolean
+            +<<Create>>Berserk()
+            +AppliquerPouvoir(attaquant :Pokemon, cible :Pokemon)
+            +afficherDescription()
+            +getNom() :String
+            +estKamikaze() :Boolean
+            +estBerserk() :Boolean
+            +estSoinZone() :Boolean
+            +estUtilise() :Boolean
+            +enUtilisation() :Boolean
+            +stopBerserk()
+        }
+
+        class SoinZone
+        {
+            -m_nom :String
+            -m_utilise :Boolean
+            +<<Create>>Berserk()
+            +AppliquerPouvoir(attaquant :Pokemon, cible :Pokemon)
+            +afficherDescription()
+            +getNom() :String
+            +estKamikaze() :Boolean
+            +estBerserk() :Boolean
+            +estSoinZone() :Boolean
+            +estUtilise() :Boolean
+            +enUtilisation() :Boolean
+            +stopBerserk()
+        }
+
+
+
+}
+
+@enduml

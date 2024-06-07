@@ -16,8 +16,16 @@ public class SoinZone implements Pouvoir {
     @Override
     public void AppliquerPouvoir(Pokemon attaquant, Pokemon cible)
     {
-        cible.setPV(10);
-        System.out.println(cible.getNom() + " regagne 10PV !");
+        if(cible.getPV() + 10 < cible.getPvMax())
+        {
+            cible.setPV(10);
+            System.out.println(cible.getNom() + " regagne 10PV !");
+        }
+
+        else {
+            System.out.println(cible.getNom() + " a déja ses PV au max !");
+        }
+
     }
 
     @Override
@@ -58,5 +66,25 @@ public class SoinZone implements Pouvoir {
     @Override
     public void stopBerserk() {
 
+    }
+
+    @Override
+    public boolean estEther() {
+        return false;
+    }
+
+    @Override
+    public boolean estGuerrier() {
+        return false;
+    }
+
+    @Override
+    public boolean estResistance() {
+        return false;
+    }
+
+    @Override
+    public boolean estPlomb() {
+        return false;
     }
 }

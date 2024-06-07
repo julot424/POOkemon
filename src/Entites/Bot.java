@@ -185,7 +185,87 @@ public class Bot extends Joueur
 
     public void jouerPouvoir(Joueur cible)
     {
+        Pouvoir pouvoir;
 
+        for(int i = 0; i < this.getTerrain().size(); i++)
+        {
+            pouvoir = this.getTerrain().get(i).getPouvoir();
+
+
+            if(pouvoir != null)
+            {
+                if(pouvoir.estBerserk() || pouvoir.estEther() || pouvoir.estGuerrier())
+                {
+                    Pokemon strongest = this.getTerrain().get(i);
+                    for(int y = 0; y < this.getTerrain().size(); y++)
+                    {
+                        if(strongest.getAtk() < this.getTerrain().get(y).getAtk())
+                        {
+                            strongest = this.getTerrain().get(y);
+                        }
+                    }
+                    this.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.getTerrain().get(i), strongest);
+                }
+
+                else if(pouvoir.estKamikaze())
+                {
+                    Pokemon tankiest = cible.getTerrain().get(i);
+                    for(int y = 0; y < cible.getTerrain().size(); y++)
+                    {
+                        if(tankiest.getPV() < cible.getTerrain().get(y).getPV())
+                        {
+                            tankiest = cible.getTerrain().get(y);
+                        }
+                    }
+                    this.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.getTerrain().get(i), tankiest);
+                }
+
+                else if(pouvoir.estResistance())
+                {
+                    Pokemon tankiest = this.getTerrain().get(i);
+                    for(int y = 0; y < this.getTerrain().size(); y++)
+                    {
+                        if(tankiest.getPV() < this.getTerrain().get(y).getPV())
+                        {
+                            tankiest = this.getTerrain().get(y);
+                        }
+                    }
+                    this.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.getTerrain().get(i), tankiest);
+                }
+
+                else if(pouvoir.estPlomb())
+                {
+                    Pokemon strongest = cible.getTerrain().get(i);
+                    for(int y = 0; y < cible.getTerrain().size(); y++)
+                    {
+                        if(strongest.getAtk() < cible.getTerrain().get(y).getAtk())
+                        {
+                            strongest = cible.getTerrain().get(y);
+                        }
+                    }
+                    this.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.getTerrain().get(i), strongest);
+                }
+
+                else if (pouvoir.estSoinZone())
+                {
+                    this.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.getTerrain().get(i), this.getTerrain().get(i));
+                }
+
+                else
+                {
+                    Pokemon weakest = cible.getTerrain().get(i);
+                    for(int y = 0; y < cible.getTerrain().size(); y++)
+                    {
+                        if(weakest.getPV() > cible.getTerrain().get(y).getAtk())
+                        {
+                            weakest = cible.getTerrain().get(y);
+                        }
+                    }
+                    this.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.getTerrain().get(i), weakest);
+                }
+
+            }
+        }
     }
 
     public void addToTerrain(Pokemon p)
