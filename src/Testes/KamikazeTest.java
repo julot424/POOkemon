@@ -10,8 +10,11 @@ public class KamikazeTest {
         public static void main(String[] args)
     {
         j1.addToTerrain(new Pokemon("pokj1", 150, 20, Type.AIR,new Kamikaze()));
-        j2.addToTerrain(new Pokemon("pokj2", 150, 20, Type.AIR,null));
+        j2.addToTerrain(new Pokemon("pokj2", 150, 20, Type.AIR,new Kamikaze()));
 
         j1.jouerPouvoir(j2);
+        j2.jouerPouvoir(j1);
+        j1.afficheTerrain();
+        j2.afficheTerrain();
     }
 }

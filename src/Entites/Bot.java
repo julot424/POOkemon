@@ -218,6 +218,8 @@ public class Bot extends Joueur
                         }
                     }
                     this.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.getTerrain().get(i), tankiest);
+                    this.estMort(this.m_terrain.getTerrain().get(i));
+                    cible.estMort(tankiest);
                 }
 
                 else if(pouvoir.estResistance())
@@ -263,7 +265,6 @@ public class Bot extends Joueur
                     }
                     this.getTerrain().get(i).getPouvoir().AppliquerPouvoir(this.getTerrain().get(i), weakest);
                 }
-
             }
         }
     }
