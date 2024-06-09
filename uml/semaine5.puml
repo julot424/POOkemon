@@ -12,9 +12,9 @@ class jeu
 {
     +main(String[] argrs)
     +estPret() :Boolean
-    +jeuAIFirst()
-    +jeuUserFirst()
-    +startGame()
+    +jeuAIFirst(j1 : Joueur, j2 Joueur)
+    +jeuUserFirst(j1 : Joueur, j2 Joueur)
+    +startGame(j1 : Joueur, j2 Joueur)
 }
 
 package Utilitaires
@@ -339,8 +339,32 @@ package Entites
             +enUtilisation() :Boolean
             +stopBerserk()
         }
+Defausse .> Pokemon : <<use>>
+Pioche .> Pokemon : <<use>>
+Main .> Pokemon : <<use>>
+Terrain .> Pokemon : <<use>>
+Bot .> Pokemon : <<use>>>
+Joueur .> Pokemon : <<use>>
+Pouvoir .> Pokemon :<<use>>
+Berserk .> Pokemon :<<use>>
+Guerrier .> Pokemon :<<use>>
+Resistance .> Pokemon :<<use>>
+SoinZone .> Pokemon :<<use>>
+SoinTotal .> Pokemon :<<use>>
+Plomb .> Pokemon :<<use>>
+Kamikaze .> Pokemon :<<use>>
+Ether .> Pokemon :<<use>>
+jeu .> Joueur  :<<use>>
 
+Joueur o-->  "2..*\n -m_pioche" Pioche
+Joueur o-->  "2..*\n -m_main" Main
+Joueur o-->  "2..*\n -m_terrain" Terrain
+Joueur o-->  "2..*\n -defause" Defausse
 
+Bot o-->  "2..*\n -m_pioche" Pioche
+Bot o-->  "2..*\n -m_main" Main
+Bot o-->  "2..*\n -m_terrain" Terrain
+Bot o-->  "2..*\n -defause" Defausse
 
 }
 
