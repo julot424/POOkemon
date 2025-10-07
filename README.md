@@ -1,47 +1,4 @@
-# POOkemon Project
-
-On souhaite développer une application pour **un nouveau un jeu Pokémon**.
-C'est un jeu à **deux joueurs** où les dresseurs s'affrontent en plaçant sur leur terrain différents Pokémons.
-
-## Organisation
-
-- Travail en **binôme** au sein d'un même groupe de TP
-- Durée : 5 semaines
-- Nombre de séances :
-   - 20h encadrées, en groupe TP
-   - 8h tutorées, en promo complète
-   - travail non-encadré
-- Sujet dévoilé en deux phases :
-  - Phase 1 sur les deux premières semaines
-  - Phase 2 dévoilée le **Lundi 20 mai**.
-
-## Calendrier
-
-- Lundi **22 avril** : début du projet
-- Dimanche **19 mai** : rendu intermédiaire
-- Lundi 20 mai : début de la phase 2
-- Dimanche **9 Juin** à minuit : rendu final
-- Lundi **10** et mardi **11 juin** : soutenances
-
-De plus, il y aura un rendu hebdomadaire **chaque dimanche à minuit**, hors vacances scolaires.
-
-
-## Planning indicatif
-
-C'est un planning indicatif qui donne simplement une trame de ce qu'il faudrait avoir si on a une progression linéaire. Il n'est pas à respecter impérativement.
-
-- **Semaine 1** : Première version de la conception générale du projet et début de l'implémentation.  
-_Fonctionalités_ :
-  - un pokémon est capable d'en attaquer un autre sans gestion des affinités, ni d'une pioche, ni d'une défausse, etc.
-- **Semaine 2** : Conception générale finalisée et suite de l'implémentation.  
-_Fonctionalités_ :
-  - gestion des affinités
-  - gestion des mains, pioches et défausses et terrain
-- **Semaine 3** : Début d'interface utilisateur avec gestion des entrées clavier  
-_Fonctionalités_ :
-  - gestion des tours de jeux
-
-
+# POOkemon 
 ## Le jeu
 
 Il s'agit d'un jeu avec un joueur humain face à l'ordinateur, qui se joue **au tour par tour**. Le gagnant est celui qui parvient à **éliminer tous les Pokémons de son adversaire**.
@@ -121,13 +78,13 @@ Un Pokémon de l'ordinateur :
 
 ## L'application
 
-Elle doit :
+Elle :
 
-- être réalisée en Java,
-- proposer une interface textuelle,
-- permettre de visualiser les Pokémons sur les terrains et ceux en main du joueur humain, mais pas celles de l'ordinateur,
-- indiquer clairement quelles sont les actions possibles et les entrées clavier à effectuer pour les réaliser.
-- afficher les actions effectuées par l'ordinateur lorsque c'est son tour
+- est réalisée en Java,
+- propose une interface textuelle,
+- permet de visualiser les Pokémons sur les terrains et ceux en main du joueur humain, mais pas celles de l'ordinateur,
+- indique clairement quelles sont les actions possibles et les entrées clavier à effectuer pour les réaliser.
+- affiche les actions effectuées par l'ordinateur lorsque c'est son tour
 
 ### Exemple d'affichage
 
@@ -173,65 +130,8 @@ En main:
 Quel pokemon souhaitez-vous jouer? (Dracaufeu/Bulbizarre/Pikachu):
 ```
 
-Il n'est pas nécessaire de reproduire le visuel tel quel mais toutes les informations doivent être présentes.
 
 ### Fin du jeu
 
 À la fin du jeu, un écran affiche "Vous avez perdu" ou "Vous avez gagné" et indique le nombre de Pokémons restants au gagnant.
 
-## Rendus hebdomadaires
-
-Votre projet doit être un fork de ce dépôt dans un groupe ayant pour nom `<nom_etudiant_1>-<nom_etudiant_2>`.
-Votre enseignant en TP et le responsable du module doivent être ajoutés comme Reporter à votre projet.
-
-Vous devez effectuer un rendu par semaine au plus tard le dimanche soir à minuit : la régularité des rendus sera prise en compte dans l'évaluation.
-Un rendu est une branche qui a pour nom `rendu<numéro-rendu>`.
-Le dernier rendu sera évalué en tant que rendu final.
-
-Chaque rendu doit contenir :
-
-- un programme qui compile dont les sources sont dans le répertoire `src/`,
-- un diagramme de classes à jour placé dans le répertoire `uml/` ayant pour nom `semaine<numero>.puml`,
-- un rapport dans le fichier `rapport.md` indiquant vos choix de conception actuels, quelles fonctionnalités ont été implémentées, les difficultés rencontrées et ce que vous planifiez de faire pour le rendu suivant.
-
-La structure du dépôt git doit être la suivante :
-```bash
-.
-├── README.md
-├── rapports/
-    ├── semaine1.md
-    ├── ...
-├── .gitignore
-├── src/
-    ├── ...
-├── uml/
-    ├── semaine1.puml
-    ├──...
-```
-
-## Rendus évalués
-
-#### 1er rendu : 19 mai
-
-Seront évalués :
-
-- Diagramme de classes complet de la phase 1
-  - respect des conventions UML
-- Code 
-  - cohérence avec l'UML
-- Rapport
-  - Justifications des choix de conception qui font référence au diagramme UML
-
-## Quelques consignes
-
-Veillez :
-
-- à respecter les [P21 Guidelines](https://moodle.unistra.fr/pluginfile.php/2390971/mod_resource/content/2/p21_guidelines.pdf)
-- à la bonne conception du code : il doit être lisible et facile à corriger, à réutiliser, à modifier et à étendre.
-
-## Quelques conseils
-
-- N'essayez pas d'implémenter toutes les fonctionnalités en une seule fois. Commencez par un programme simple mais fonctionnel et intégrez progressivement les fonctionnalités.
-- Faites des commits réguliers sur vos branches de travail.
-- Concevez votre code de façon à ce qu'il soit facile de le modifier et d'y ajouter de nouvelles fonctionnalités, notamment en prévision de la phase 2.
-- La qualité de la conception et du code produit est plus importante que le nombre de fonctionnalités intégrées.
