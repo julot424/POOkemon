@@ -42,15 +42,36 @@ Chaque Pokémon possède :
 - des **points de vie**
 - une **force d'attaque**
 - une **affinité avec un élément**.
+- un **pouvoir**
+
+### Jouer un pouvoir
+Au début de son tour, un joueur peut jouer le pouvoir de chaque Pokémon dans l'ordre de son choix avant que ses Pokémons n'attaquent.
+
+### Attribution des pouvoirs
+Au début de la partie, lors de la génération des Pokémons, chaque Pokémon se voit attribuer un ou aucun pouvoir.
+Le même pouvoir ne peut se voir attribuer qu'à un seul Pokémon dans tout le jeu.
+
+### Liste des pouvoirs
+Les pouvoirs peuvent être à utilisation unique ou être réutilisables à chaque tour.
+- **Résistance**, à utilisation unique : le Pokémon choisit un Pokémon de son camp (éventuellement lui-même). Jusqu'à la fin de la partie ou à la mort du Pokémon choisi, à chaque attaque reçue celui-ci subit subit 10 dégâts de moins.
+- **Berserk**, à utilisation unique : le Pokémon choisit un Pokémon de son camp (éventuellement lui-même). Pour le tour en cours, l'attaque de ce Pokémon est doublée.
+- **Soin total**, à utilisation unique : le Pokémon choisit un Pokémon de son camp (éventuellement lui-même). Celui-ci regagne toute sa vie.
+- **Soin simple**, utilisable à chaque tour : le Pokémon choisit un Pokémon de son camp (éventuellement lui-même). Celui-ci regagne 30 points de vie (mais ne peut pas dépasser son nombre de points de vie initial).
+- **Kamikaze**, à utilisation unique : le Pokémon choisit un Pokémon du camp adverse. Les deux Pokémons sont alors éliminés.
+- **Affinité Ether**, à utilisation unique : le Pokémon choisit un Pokémon de son camp (éventuellement lui-même). Le Pokémon change son affinité pour une affinité avec l'Ether. L'Ether est un nouvel élément ayant un avantage sur tous les autres.
+- **Affinité Plomb**, à utilisation unique : le Pokémon choisit un Pokémon adverse. Le Pokémon change son affinité pour une affinité avec le plomb. Le Plomb est un nouvel élément sur lequel tous les autres éléments ont un avantage.
+- **Soin de zone**, utilisable à chaque tour : chaque Pokémon de son camp regagne 10 points de vie.
 
 ### Les éléments
 
-Il y a 4 éléments : la terre, l'eau, le feu et l'air. Chaque élément a un avantage sur un autre élément :
+Il y a 6 éléments : la terre, l'eau, le feu et l'air. Chaque élément a un avantage sur un autre élément :
 
 - la terre a l'avantage sur l'eau
 - l'eau à l'avantage sur le feu
 - le feu a l'avantage sur l'air
 - l'air a l'avantage sur la terre.
+- l'ether a l'avantage sur tout les éléments
+- le plomb est en désaventage sur tout les éléments
 
 ### Attaque des Pokémons
 
