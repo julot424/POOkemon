@@ -1,4 +1,7 @@
-# POOkemon 
+# POOkemon
+
+![image pikachu]()
+
 ## Le jeu
 
 Il s'agit d'un jeu avec un joueur humain face à l'ordinateur, qui se joue **au tour par tour**. Le gagnant est celui qui parvient à **éliminer tous les Pokémons de son adversaire**.
