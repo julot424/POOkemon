@@ -1,6 +1,6 @@
 # POOkemon
 
-![image pikachu]()
+![image pikachu](pikachu.png)
 
 ## Le jeu
 
